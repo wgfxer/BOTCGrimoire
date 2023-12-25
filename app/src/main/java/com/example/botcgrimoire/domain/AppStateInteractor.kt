@@ -113,5 +113,6 @@ data class RoleForChoose(
     val number: Int,
     val role: Role,
     val isChosen: Boolean = false,
-    val playerName: String = ""
+    val playerName: String = "",
+    val chooseOrder: Int = -1
 )

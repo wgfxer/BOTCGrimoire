@@ -86,10 +86,11 @@ class ChooseYourRoleViewModel(
             _state.value = _state.value.copy(dialog = dialog)
         } else {
             val oldState = appStateInteractor.state.value as AppState.RevealingRoles
+            val alreadyChosenCount = oldState.roles.count { it.isChosen }
             navigateToRevealRoleScreen(role)
             val newList = oldState.roles.map { chooseableRole ->
                 if (chooseableRole.role == role) {
-                    chooseableRole.copy(isChosen = true)
+                    chooseableRole.copy(isChosen = true, chooseOrder = alreadyChosenCount)
                 } else {
                     chooseableRole
                 }
@@ -111,7 +112,7 @@ class ChooseYourRoleViewModel(
         val travellers = currentState.travellers.map {
             RoleGameState(role = it)
         }
-        val newRolesList = currentState.roles.map {
+        val newRolesList = currentState.roles.sortedBy { it.chooseOrder }.map {
             val actualRole = if (it.role == Role.Drunk) drunkRole!! else it.role
             RoleGameState(role = actualRole, playerName = it.playerName)
         } + travellers
