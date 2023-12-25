@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -20,6 +22,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.example.botcgrimoire.R
 import com.example.botcgrimoire.di.getAppStateInteractor
 import com.example.botcgrimoire.domain.AppState
@@ -62,9 +67,12 @@ fun RevealedRoleScreen(actualRole: Role, navigateBack: () -> Unit) {
     }
     Column {
         Text(
-            "Запомни свою роль",
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.titleMedium
+            stringResource(id = R.string.remember_your_role),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.titleLarge
         )
         Image(
             painter = painterResource(id = role.icon),
@@ -73,18 +81,20 @@ fun RevealedRoleScreen(actualRole: Role, navigateBack: () -> Unit) {
         )
         Text(stringResource(id = role.roleName),
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleLarge
         )
         Text(
-            stringResource(id = role.playerInfo),
-            style = MaterialTheme.typography.bodyLarge
+            stringResource(id = R.string.check_info_in_list),
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            style = MaterialTheme.typography.titleMedium
         )
         Spacer(modifier = Modifier.weight(1f))
         TextField(
             modifier = Modifier.fillMaxWidth(),
             value = playerName.value,
             onValueChange = { playerName.value = it },
-            label = { Text(text = stringResource(id = R.string.enter_name)) }
+            label = { Text(text = stringResource(id = R.string.enter_name)) },
+            keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
         )
         Button(onClick = { navigateBack(); saveNameLambda() }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Text("Вернуться к выбору ролей")

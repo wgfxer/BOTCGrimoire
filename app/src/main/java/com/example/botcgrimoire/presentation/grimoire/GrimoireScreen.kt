@@ -358,7 +358,6 @@ fun CircleBoxWithText(
             val rightX = constraints.maxWidth - placeables.last().width - padding
             val height = maxOf(placeables.first().height, placeables.last().height)
             val width = constraints.maxWidth
-            android.util.Log.i("MYTAG_BOROV", "box size = $size, layoutWidth = $width layoutHeight = $height $bottomText")
             layout(width, height) {
                 placeables.first().placeRelative(padding.roundToInt(), 0)
                 placeables.last().placeRelative(rightX.roundToInt(), 0)

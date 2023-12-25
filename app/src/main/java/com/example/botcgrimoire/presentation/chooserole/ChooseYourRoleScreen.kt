@@ -30,10 +30,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.botcgrimoire.R
 import com.example.botcgrimoire.domain.ChooseYourRoleScreenEvent
 import com.example.botcgrimoire.domain.ChooseYourRoleScreenState
 import com.example.botcgrimoire.domain.Role
@@ -84,7 +86,7 @@ fun ChooseYourRoleScreen(
 @Composable
 private fun DrunkDialog(rolesForDrunk: List<Role>?, onDrunkRoleClick: (Role) -> Unit) {
     if (rolesForDrunk != null) {
-        Dialog(onDismissRequest = {  }) {
+        Dialog(onDismissRequest = { }) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -109,12 +111,23 @@ private fun DrunkDialog(rolesForDrunk: List<Role>?, onDrunkRoleClick: (Role) -> 
 }
 
 @Composable
-private fun ChooseYourRoleScreen(chooseYourRoleScreenState: ChooseYourRoleScreenState, onRoleChosen: (Role) -> Unit, navigateToGrimoire: () -> Unit) {
+private fun ChooseYourRoleScreen(
+    chooseYourRoleScreenState: ChooseYourRoleScreenState,
+    onRoleChosen: (Role) -> Unit,
+    navigateToGrimoire: () -> Unit
+) {
     val rolesChunked = chooseYourRoleScreenState.roles.chunked(ELEMENTS_IN_ROW)
     Column {
-        Column(modifier = Modifier
-            .weight(1f)
-            .verticalScroll(rememberScrollState())
+        Text(
+            stringResource(id = R.string.choose_role_title),
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.titleLarge
+        )
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .verticalScroll(rememberScrollState())
         ) {
             rolesChunked.forEach { rolesLine ->
                 Row {
@@ -133,7 +146,6 @@ private fun ChooseYourRoleScreen(chooseYourRoleScreenState: ChooseYourRoleScreen
             Text(text = "Начать игру")
         }
     }
-
 }
 
 private const val ELEMENTS_IN_ROW = 3

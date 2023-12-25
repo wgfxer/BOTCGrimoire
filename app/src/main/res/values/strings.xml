@@ -213,9 +213,12 @@
 
     <string name="first_night">Первая ночь</string>
     <string name="other_nights">Другие ночи</string>
-    <string name="enter_name">Введите ваше имя(необязательно)</string>
+    <string name="enter_name">Поле для имени(заполняет ведущий)</string>
 
     <string name="poisoned">Отравлен</string>
+    <string name="choose_role_title">Выбери доступный жетон чтобы узнать свою роль</string>
+    <string name="remember_your_role">Запомни свою роль</string>
+    <string name="check_info_in_list">Описание роли прочитаете в памятке</string>
 
 
 </resources>
