@@ -35,7 +35,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.botcgrimoire.domain.ChooseYourRoleScreenEvent
-import com.example.botcgrimoire.domain.ChooseableRole
 import com.example.botcgrimoire.domain.ChooseYourRoleScreenState
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleForChoose

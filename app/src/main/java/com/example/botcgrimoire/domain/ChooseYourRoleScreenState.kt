@@ -15,10 +15,3 @@ data class ChooseYourRoleScreenState(
 ) {
     val isStartGameButtonEnabled = roles.all { it.isChosen }
 }
-
-@Serializable
-data class ChooseableRole(
-    val number: Int,
-    val role: Role,
-    val isChosen: Boolean = false
-)
