@@ -105,8 +105,8 @@ private fun GrimoireScreen(
                     roleState = it,
                     reminders = state.remindersForRole(it.role),
                     onRoleClick,
-                    state.firstNightOrder.indexOf(it.role) + 1,
-                    state.otherNightsOrder.indexOf(it.role) + 1,
+                    if (state.showNightOrderInGrimoire) state.firstNightOrder.indexOf(it.role) + 1 else 0,
+                    if (state.showNightOrderInGrimoire) state.otherNightsOrder.indexOf(it.role) + 1 else 0,
                     onOffsetChanged
                 )
             }

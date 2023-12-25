@@ -22,8 +22,13 @@ class SettingsScreenViewModel(
     private val appStateInteractor: AppStateInteractor,
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(SettingsScreenState())
+    private val _state = MutableStateFlow(initialState())
     val state: StateFlow<SettingsScreenState> = _state.asStateFlow()
+
+    private fun initialState(): SettingsScreenState {
+        val showNightOrder = (appStateInteractor.state.value as? AppState.GameState)?.showNightOrderInGrimoire ?: false
+        return SettingsScreenState(showNightOrderInGrimoire = showNightOrder)
+    }
 
     fun onRestartGameButtonClick(navigateToStart: () -> Unit) {
         val dialog = DialogData(
@@ -75,8 +80,16 @@ class SettingsScreenViewModel(
         dismissDialog()
     }
 
+    fun onChangeNightOrderShow() {
+        val newValue = !_state.value.showNightOrderInGrimoire
+        _state.value = _state.value.copy(showNightOrderInGrimoire = newValue)
+        val currentAppState = appStateInteractor.state.value as AppState.GameState
+        val newAppState = currentAppState.copy(showNightOrderInGrimoire = newValue)
+        appStateInteractor.changeGameState(newAppState)
+    }
+
     fun dismissDialog() {
-        _state.value = SettingsScreenState()
+        _state.value = SettingsScreenState(showNightOrderInGrimoire = _state.value.showNightOrderInGrimoire)
     }
 
     fun changeNames(newNames: Map<Role, String>) {

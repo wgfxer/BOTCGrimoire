@@ -85,7 +85,8 @@ sealed interface AppState {
         val roles: List<RoleGameState> = emptyList(),
         val reminders: List<ReminderLink> = emptyList(),
         val isFirstNight: Boolean = true,
-        val drunkRole: Role? = null
+        val drunkRole: Role? = null,
+        val showNightOrderInGrimoire: Boolean = false
     ): AppState {
 
         val firstNightOrder: List<Role> = getOrderList(true)

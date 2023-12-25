@@ -43,6 +43,7 @@ fun SettingsScreen(navigateToStart: () -> Unit) {
             SettingsItem(textRes = R.string.add_player) { viewModel.addPlayerClicked() }
             SettingsItem(textRes = R.string.remove_player) { viewModel.removePlayerClicked() }
             SettingsItem(textRes = R.string.change_player_name) { viewModel.changePlayerName() }
+            SettingsItem(textRes = state.value.showNightOrderButtonText) { viewModel.onChangeNightOrderShow() }
         }
         AlertDialog(dialogData = state.value.dialogData)
         AddRoleDialog(dialogData = state.value.addRoleDialog, onDismiss = { viewModel.dismissDialog() }, onClick = { viewModel.addRole(it) })

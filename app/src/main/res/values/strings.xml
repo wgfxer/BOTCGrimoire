@@ -197,6 +197,8 @@
     <string name="add_player">Добавить игрока</string>
     <string name="remove_player">Удалить игрока</string>
     <string name="change_player_name">Изменить имя</string>
+    <string name="hide_night_order">Скрыть порядок хода в гримуаре</string>
+    <string name="show_night_order">Показать порядок хода в гримуаре</string>
 
     <string name="demon_card">Этот игрок - Демон</string>
     <string name="minions_card">Это - ваши Приспешники</string>
