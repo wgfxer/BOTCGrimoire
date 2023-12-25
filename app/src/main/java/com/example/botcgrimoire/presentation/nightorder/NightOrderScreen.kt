@@ -130,6 +130,7 @@ private fun NightOrderElement(model: NightOrderModel) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painterResource(id = model.role.icon), contentDescription = null, modifier = Modifier.size(36.dp))
                 Text(stringResource(id = model.role.roleName), fontWeight = FontWeight.Bold)
+                if (model.playerName.isNotEmpty()) Text("(${model.playerName})")
                 if (model.isConditional) {
                     val color = MaterialTheme.colorScheme.onBackground
                     Icon(

@@ -50,8 +50,16 @@ class NightOrderViewModel(
         val order = if (isFirstNight) firstNight else otherNights
         val currentRoles = currentAppState.roles.map { it.role }
         return order.filter { currentRoles.contains(it.role) }.map {
-            it.copy(isDead = isDead(it.role, currentAppState), isDrunk = isDrunk(it.role, currentAppState))
+            it.copy(
+                isDead = isDead(it.role, currentAppState),
+                isDrunk = isDrunk(it.role, currentAppState),
+                playerName = getPlayerName(it.role, currentAppState)
+            )
         }
+    }
+
+    private fun getPlayerName(role: Role, currentAppState: AppState.GameState): String {
+        return currentAppState.roles.find { it.role == role }?.playerName.orEmpty()
     }
 
     private fun isDead(role: Role, state: AppState.GameState): Boolean {

@@ -35,5 +35,6 @@ data class NightOrderModel(
     val description: Int,
     val isDrunk: Boolean = false,
     val isDead: Boolean = false,
-    val isConditional: Boolean = false
+    val isConditional: Boolean = false,
+    val playerName: String = ""
 )
