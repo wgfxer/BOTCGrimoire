@@ -328,7 +328,7 @@ fun CircleBoxWithText(
             val paddingBottom = this.size.height * 0.1f
             drawIntoCanvas {
                 val path = Path()
-                path.addArc(RectF(0f, 0f + 2 * paddingBottom, width, height - paddingBottom), 180f, 180f)
+                path.addArc(RectF(0f, 0f + 3 * paddingBottom, width, height - paddingBottom), 180f, 180f)
                 it.nativeCanvas.drawTextOnPath(topText, path, 0f, 0f, paint)
             }
             drawIntoCanvas {
