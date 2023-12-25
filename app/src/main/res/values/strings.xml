@@ -1,0 +1,219 @@
+<resources>
+    <string name="app_name">BOTCGrimoire</string>
+
+    <string name="poisoner_role_name">Отравитель</string>
+    <string name="poisoner_player_info">Каждую ночь, выберите игрока: его способность даёт сбои сегодня ночью и завтра днём.</string>
+    <string name="poisoner_teller_info_fn">[ICON: eye_open]Отравитель указывает на игрока.[ICON: eye_closed] Этот игрок отравлен.[ICON: circle]</string>
+    <string name="poisoner_teller_info_on">Ранее отравленный игрок больше не отравлен.[ICON: circle] \n [ICON: eye_open]Отравитель указывает на игрока. [ICON: eye_closed]Этот игрок отравлен.[ICON: circle]</string>
+
+    <string name="washerwoman_role_name">Прачка</string>
+    <string name="washerwoman_player_info">В начале игры вы узнаёте, что 1 из 2 игроков является Горожанином и узнаёте его роль.</string>
+    <string name="washerwoman_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Покажите жетон роли Горожанина, присутствующего в игре. Укажите на двух игроков, один из которых является этой ролью.[ICON: eye_closed]</string>
+
+    <string name="librarian_role_name">Библиотекарь</string>
+    <string name="librarian_player_info">В начале игры вы узнаёте, что 1 из 2 игроков является Изгоем и узнаёте его роль.</string>
+    <string name="librarian_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Покажите жетон роли Изгоя, присутствующего в игре. Укажите на двух игроков, один из которых является этой ролью.[ICON: eye_closed]</string>
+
+    <string name="investigator_role_name">Сыщик</string>
+    <string name="investigator_player_info">В начале игры вы узнаёте, что 1 из 2 игроков является Приспешником и узнаёте его роль.</string>
+    <string name="investigator_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Покажите жетон роли Приспешника, присутствующего в игре. Укажите на двух игроков, один из которых является этой ролью.[ICON: eye_closed]</string>
+
+    <string name="chef_role_name">Повар</string>
+    <string name="chef_player_info">В начале игры вы узнаёте, сколько пар (рядом сидящих друг с другом) злых игроков в игре.</string>
+    <string name="chef_teller_info">[ICON: eye_open]Покажите число (0, 1, 2, …), равное количеству пар сидящих рядом друг с другом злых игроков.[ICON: eye_closed]</string>
+
+    <string name="empath_role_name">Эмпат</string>
+    <string name="empath_player_info">Каждую ночь, вы узнаёте, сколько из ваших живых соседей на стороне зла.</string>
+    <string name="empath_teller_info">[ICON: eye_open]Покажите число (0, 1, 2), соответствующее количеству злых живых соседей Эмпата.[ICON: eye_closed]</string>
+
+    <string name="fortune_teller_role_name">Гадалка</string>
+    <string name="fortune_teller_player_info">Каждую ночь, выберите 2 игроков: вы узнаёте, есть ли среди них Демон. Один из добрых игроков с начала игры будет зарегистрирован для вас как Ложный Демон.</string>
+    <string name="fortune_teller_teller_info">[ICON: eye_open]Гадалка указывает на двух игроков. Жестом укажите (кивок - да, качание головой - нет), является ли Демоном кто-то из них.[ICON: eye_closed]</string>
+
+    <string name="butler_role_name">Дворецкий</string>
+    <string name="butler_player_info">Каждую ночь, выберите игрока (кроме себя): завтра вы можете голосовать, только если этот игрок тоже голосует. (Номинируете на казнь вы по обычным правилам)</string>
+    <string name="butler_teller_info">[ICON: eye_open]Дворецкий указывает на игрока.[ICON: eye_closed] Отметьте этого игрока жетоном "Хозяин"</string>
+
+    <string name="spy_role_name">Шпион</string>
+    <string name="spy_player_info">Каждую ночь, загляните в Гримуар. Вы можете опознаваться как Горожанин или Изгой, даже после смерти.</string>
+    <string name="spy_teller_info">[ICON: eye_open]Покажите Шпиону Гримуар на достаточное время.[ICON: eye_closed]</string>
+
+
+    <string name="drunk_role_name">Пьяница</string>
+    <string name="drunk_player_info">Вы не знаете, что вы Пьяница. Вы считаете себя каким-то Горожанином, но ваша способность даёт сбои.</string>
+
+
+    <string name="recluse_role_name">Затворник</string>
+    <string name="recluse_player_info">Вы можете опознаваться как Приспешник или Демон, даже после смерти.</string>
+
+
+    <string name="saint_role_name">Святой</string>
+    <string name="saint_player_info">Если вас казнили, ваша команда проиграла.</string>
+
+
+    <string name="scarlet_woman_role_name">Блудница</string>
+    <string name="scarlet_woman_player_info">Если живы хотя бы 5 игроков, после смерти Демона вы становитесь Демоном. (Странники не считаются.)</string>
+    <string name="scarlet_woman_teller_info">Если Блудница стала Демоном: \n [ICON: eye_open]покажите карточку "Вы являетесь", затем жетон Демона.[ICON: eye_closed]</string>
+
+
+    <string name="baron_role_name">Барон</string>
+    <string name="baron_player_info">В игре участвует на 2 Изгоя больше. [+2 Изгоя и -2 Горожанина]</string>
+
+
+    <string name="imp_role_name">Черт</string>
+    <string name="imp_player_info">Каждую ночь*, выберите игрока: он умирает. Если убили себя, один из Приспешников становится Чёртом.</string>
+    <string name="imp_teller_info">[ICON: eye_open]Черт указывает на игрока. [ICON: eye_closed]Этот игрок умирает.[ICON: circle] Если Черт выбрал себя: замените жетон одного из живых Приспешников запасным жетоном Черта. [ICON: circle] \n [ICON: eye_open]Покажите ему карточку "Вы являетесь", затем жетон Черта.[ICON: eye_closed]</string>
+
+
+    <string name="undertaker_role_name">Гробовщик</string>
+    <string name="undertaker_player_info">Каждую ночь*, вы узнаёте роль казнённого днём игрока.</string>
+    <string name="undertaker_teller_info">Если сегодня был казнен игрок:\n[ICON: eye_open]покажите жетон роли этого игрока.[ICON: eye_closed]</string>
+
+
+    <string name="monk_role_name">Монах</string>
+    <string name="monk_player_info">Каждую ночь*, выберите игрока (кроме себя): этот игрок защищен от демона.</string>
+    <string name="monk_teller_info">Игрок, что был защищен ранее, теряет защиту.[ICON: circle] \n [ICON: eye_open]Монах указывает на игрока, кроме себя.[ICON: eye_closed] Отметьте этого игрока жетоном "Защищен".[ICON: circle]</string>
+
+
+    <string name="ravenkeeper_role_name">Смотритель воронов</string>
+    <string name="ravenkeeper_player_info">Если умерли ночью, то просыпаетесь и выбираете игрока: вы узнаёте его роль.</string>
+    <string name="ravenkeeper_teller_info">Если Смотритель воронов умер этой ночью: [ICON: eye_open]Смотритель воронов указывает на игрока. Покажите жетон роли этого игрока.[ICON: eye_closed]</string>
+
+
+    <string name="virgin_role_name">Девственница</string>
+    <string name="virgin_player_info">Срабатывает в первый раз, когда вас предложили казнить. Если предложил Горожанин, его казнят немедленно (без голосования).</string>
+
+
+    <string name="slayer_role_name">Истребитель</string>
+    <string name="slayer_player_info">Раз за игру, днём публично выбираете игрока: если выбранный игрок — Демон, он умирает.</string>
+
+
+    <string name="soldier_role_name">Солдат</string>
+    <string name="soldier_player_info">Вы защищены от Демона.</string>
+
+
+    <string name="mayor_role_name">Мэр</string>
+    <string name="mayor_player_info">Если осталось в живых ровно 3 игрока и за день никого не казнили, вы победили. Если вас убивают ночью, вместо вас может умереть другой.</string>
+
+    <string name="bureaucrat_role_name">Бюрократ</string>
+    <string name="bureaucrat_player_info">Каждой ночью выберите игрока (кроме себя): его голос завтра засчитывается трижды.</string>
+
+    <string name="thief_role_name">Вор</string>
+    <string name="thief_player_info">Каждой ночью выберите игрока (кроме себя): завтра его голос засчитывается наоборот.</string>
+
+    <string name="gunslinger_role_name">Стрелок</string>
+    <string name="gunslinger_player_info">Каждый день после подсчета первого голосования вы можете выбрать игрока, который в нем голосовал. Этот игрок умирает.</string>
+
+    <string name="scapegoat_role_name">Козел отпущения</string>
+    <string name="scapegoat_player_info">Если казнен игрок, находящийся на вашей стороне, вместо него иногда можете быть казнены вы.</string>
+
+    <string name="beggar_role_name">Нищий</string>
+    <string name="beggar_player_info">Вы должны потратить жетон голоса, чтобы голосовать. Мертвые игроки могут отдать вам свои жетоны голоса. Вы узнаете сторону того, кто это сделает.</string>
+
+    <string name="townsfolk_type_name">Горожане</string>
+    <string name="outsiders_type_name">Изгои</string>
+    <string name="minions_type_name">Приспешники</string>
+    <string name="demons_type_name">Демоны</string>
+    <string name="travellers_type_name">Странники</string>
+
+    <string name="minions_fn_info_title">Информация для Приспешников</string>
+    <string name="minions_fn_info_content">Если в игре 7 или более игроков: \n[ICON: eye_open]Если больше одного Приспешника, они все видят друг друга. \nПокажи карточку «Это демон». Укажи на демона[ICON: eye_closed]</string>
+
+    <string name="demon_fn_info_title">Информация для Демона</string>
+    <string name="demon_fn_info_content">Если в игре 7 или более игроков:\n[ICON: eye_open]Покажи карточку «Это твои приспешники». Укажи на каждого Приспешника. \nПокажи карточку «Эти персонажи НЕ участвуют в игре» и покажи 3 жетона хороших персонажей, которые не в игре.[ICON: eye_closed]</string>
+
+    
+
+    <string name="butler_reminder_description">Мастер</string>
+    <string name="monk_reminder_description">Защищен</string>
+    <string name="drunk_reminder_description">Пьяница</string>
+    <string name="poisoner_reminder_description">Отравлен</string>
+    <string name="fortune_teller_reminder_description">Ложный след</string>
+    <string name="scarlet_woman_reminder_description">Новый демон</string>
+    <string name="imp_reminder_description">Новый демон</string>
+    <string name="undertaker_reminder_description">Выкопан труп</string>
+    <string name="investigator_reminder_description">Приспешник</string>
+    <string name="investigator_reminder_description_false">Ложный след</string>
+    <string name="librarian_reminder_description">Изгой</string>
+    <string name="librarian_reminder_description_false">Ложный след</string>
+    <string name="washerwoman_reminder_description">Горожанин</string>
+    <string name="washerwoman_reminder_description_false">Ложный след</string>
+    <string name="slayer_reminder_description">Потрачено</string>
+    <string name="virgin_reminder_description">Потрачено</string>
+    <string name="thief_reminder_description">Голос -1</string>
+    <string name="bureaucrat_reminder_description">Голос х3</string>
+    <string name="good_traveller_reminder_description">Добро</string>
+    <string name="evil_traveller_reminder_description">Зло</string>
+
+    <string name="travellers_night_info">Каждый Странник, если может действовать ночью, действует.</string>
+
+<!--    <string name="butler_reminder_description">Сделать мастером дворецкого</string>-->
+<!--    <string name="monk_reminder_description">Защитить монахом</string>-->
+<!--    <string name="drunk_reminder_description">Пьяница</string>-->
+<!--    <string name="poisoner_reminder_description">Отравить отравителем</string>-->
+<!--    <string name="fortune_teller_reminder_description">Ложный след для гадалки</string>-->
+<!--    <string name="scarlet_woman_reminder_description">Сделать блудницу демоном</string>-->
+<!--    <string name="imp_reminder_description">Умирает</string>-->
+<!--    <string name="undertaker_reminder_description">Пометить что гробовщик выкопал</string>-->
+<!--    <string name="investigator_reminder_description">Приспешник для сыщика</string>-->
+<!--    <string name="investigator_reminder_description_false">Ложный след для сыщика</string>-->
+<!--    <string name="librarian_reminder_description">Изгой</string>-->
+<!--    <string name="librarian_reminder_description_false">Ложный след</string>-->
+<!--    <string name="washerwoman_reminder_description">Горожанин</string>-->
+<!--    <string name="washerwoman_reminder_description_false">Ложный след</string>-->
+<!--    <string name="slayer_reminder_description">Потрачено</string>-->
+<!--    <string name="virgin_reminder_description">Потрачено</string>-->
+
+
+<!--    <string name="_reminder_description">Состязание</string>-->
+<!--    <string name="_reminder_description">Состязание</string>-->
+<!--    <string name="_reminder_description">Голос х3</string>-->
+<!--    <string name="_reminder_description">Наказать</string>-->
+<!--    <string name="_reminder_description">Голос -1</string>-->
+<!--    <string name="_reminder_description">Наказать</string>-->
+<!--    <string name="_reminder_description">Наказать</string>-->
+<!--    <string name="_reminder_description">Наказать</string>-->
+<!--    <string name="_reminder_description">Оберегать</string>-->
+<!--    <string name="_reminder_description">Оберегать</string>-->
+
+
+    <string name="restart_game_dialog_title">Вы уверены что хотите начать игру сначала ?</string>
+    <string name="restart_game_dialog_subtitle">Данные по текущей игре будут сброшены</string>
+    <string name="restart_game_dialog_positive_button">Начать сначала</string>
+    <string name="restart_game_dialog_negative_button">Продолжить игру</string>
+
+    <string name="reselect_role_dialog_title">Эта роль уже была выбрана</string>
+    <string name="reselect_role_dialog_subtitle">Вы уверены что хотите перейти на экран этой роли? Игроку нельзя переходить на экран чужой роли</string>
+    <string name="reselect_role_dialog_positive_button">Да, хочу перейти</string>
+    <string name="reselect_role_dialog_negative_button">Нет</string>
+
+    <string name="grimoire_tab">Гримуар</string>
+    <string name="cards_tab">Карточки</string>
+    <string name="night_order_tab">Ночной ход</string>
+    <string name="settings_tab">Настройки</string>
+
+    <!--settings region-->
+    <string name="restart_game_button">Начать игру сначала</string>
+    <string name="add_player">Добавить игрока</string>
+    <string name="remove_player">Удалить игрока</string>
+    <string name="change_player_name">Изменить имя</string>
+
+    <string name="demon_card">Этот игрок - Демон</string>
+    <string name="minions_card">Это - ваши Приспешники</string>
+    <string name="demon_bluffs_card">Показать блефы для Демона</string>
+    <string name="demon_bluffs_card_hint">Этих ролей нет в игре :</string>
+    <string name="another_player_role_card">Показать жетон роли</string>
+    <string name="choose_role_card_hint">Выберите роль для показа</string>
+    <string name="your_new_role_card">Теперь вы …</string>
+    <string name="custom_text_card">Показать произвольный текст</string>
+
+    <string name="done">Готово</string>
+
+    <string name="first_night">Первая ночь</string>
+    <string name="other_nights">Другие ночи</string>
+    <string name="enter_name">Введите ваше имя(необязательно)</string>
+
+    <string name="poisoned">Отравлен</string>
+
+
+</resources>
