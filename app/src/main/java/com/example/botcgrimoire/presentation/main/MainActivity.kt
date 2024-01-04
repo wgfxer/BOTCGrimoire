@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         val interactor = getAppStateInteractor()
         val currentState = interactor.state.value
         val startDestination = when (currentState) {
-            AppState.ConfigureGame -> ConfigureGameScreen
+            is AppState.ConfigureGame -> ConfigureGameScreen
             is AppState.GameState -> MainGameScreen
             is AppState.RevealingRoles -> ChooseYourRoleScreen
         }

@@ -36,7 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.botcgrimoire.R
-import com.example.botcgrimoire.domain.ConfigureGameScreenState
+import com.example.botcgrimoire.domain.AppState
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleType
 import com.example.botcgrimoire.domain.RoleType.Demons
@@ -58,6 +58,7 @@ fun ConfigureGameScreen(
     val viewModel: ConfigureGameViewModel = viewModel(factory = configureGameVMFactory())
     Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         val state = viewModel.state.collectAsState()
+        val warningText = viewModel.warningText.collectAsState()
         val onPlayersCountChanged: (Int) -> Unit = remember { { viewModel.onPlayersCountChanged(it) } }
         val onRoleSelected: (Role) -> Unit = remember { { viewModel.onRoleClick(it) } }
         val onRandomRolesClick: () -> Unit = remember { { viewModel.onRandomRolesClick() } }
@@ -70,6 +71,7 @@ fun ConfigureGameScreen(
         }
         ChoosePlayersCount(
             state.value,
+            warningText.value,
             onPlayersCountChanged,
             onRoleSelected,
             onRandomRolesClick,
@@ -83,7 +85,8 @@ fun ConfigureGameScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChoosePlayersCount(
-    state: ConfigureGameScreenState,
+    state: AppState.ConfigureGame,
+    warningText: String?,
     onPlayersCountChanged: (Int) -> Unit,
     onRoleSelected: (Role) -> Unit,
     onRandomRolesClick: () -> Unit,
@@ -103,7 +106,7 @@ fun ChoosePlayersCount(
             rolesSection(Demons, onRoleSelected, state.selectedDemons, countModel.demonsCount)
             rolesSection(Travellers, onRoleSelected, state.selectedTravellers, null)
         }
-        Footer(onContinueClick, state.isContinueButtonEnabled, state.warningText)
+        Footer(onContinueClick, state.isContinueButtonEnabled, warningText)
     }
 }
 

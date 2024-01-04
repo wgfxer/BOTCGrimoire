@@ -219,6 +219,7 @@
     <string name="choose_role_title">Выбери доступный жетон чтобы узнать свою роль</string>
     <string name="remember_your_role">Запомни свою роль</string>
     <string name="check_info_in_list">Описание роли прочитаете в памятке</string>
+    <string name="cannot_add_role_warning">Вы не можете добавить роль, пока не увеличите количество игроков</string>
 
 
 </resources>

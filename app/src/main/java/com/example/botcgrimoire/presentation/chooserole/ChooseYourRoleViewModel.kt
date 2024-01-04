@@ -13,6 +13,7 @@ import com.example.botcgrimoire.domain.DialogData
 import com.example.botcgrimoire.domain.ReminderLink
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleGameState
+import com.example.botcgrimoire.domain.RolesCountModelHelper
 import com.example.botcgrimoire.domain.drunkReminder
 import com.example.botcgrimoire.domain.townsfolk
 import com.example.botcgrimoire.domain.travellers
@@ -28,8 +29,8 @@ import kotlinx.coroutines.launch
  * @author Valeriy Minnulin
  */
 class ChooseYourRoleViewModel(
-    private val appStateInteractor: AppStateInteractor
-): ViewModel() {
+    private val appStateInteractor: AppStateInteractor,
+) : ViewModel() {
     private val _state = MutableStateFlow(createInitialState())
     val state: StateFlow<ChooseYourRoleScreenState> = _state.asStateFlow()
 
@@ -59,16 +60,22 @@ class ChooseYourRoleViewModel(
                 subtitle = R.string.restart_game_dialog_subtitle,
                 positiveButton = ButtonData(text = R.string.restart_game_dialog_positive_button) {
                     _state.value = _state.value.copy(dialog = null)
-                    appStateInteractor.clearData()
-                    sendEvent(ChooseYourRoleScreenEvent.NavigateToConfigureGame)
+                    goToConfigureScreen()
                 },
                 negativeButton = ButtonData(text = R.string.restart_game_dialog_negative_button),
                 dismissLambda = { _state.value = _state.value.copy(dialog = null) }
             )
             _state.value = _state.value.copy(dialog = dialog)
         } else {
-            sendEvent(ChooseYourRoleScreenEvent.NavigateToConfigureGame)
+            goToConfigureScreen()
         }
+    }
+
+    private fun goToConfigureScreen() {
+        val currentState = appStateInteractor.state.value as AppState.RevealingRoles
+        val newState = currentState.previousState
+        appStateInteractor.changeGameState(newState)
+        sendEvent(ChooseYourRoleScreenEvent.NavigateToConfigureGame)
     }
 
     fun onRoleClick(role: Role, navigateToRevealRoleScreen: (Role) -> Unit) {
@@ -102,7 +109,9 @@ class ChooseYourRoleViewModel(
     }
 
     fun onDrunkRoleClick(role: Role) {
-        appStateInteractor.changeGameState(AppState.RevealingRoles(_state.value.roles, drunkRole = role))
+        val state = appStateInteractor.state.value as AppState.RevealingRoles
+        val newState = state.copy(drunkRole = role)
+        appStateInteractor.changeGameState(newState)
         _state.value = _state.value.copy(rolesForDrunk = null)
     }
 

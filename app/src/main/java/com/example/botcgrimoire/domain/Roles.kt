@@ -257,6 +257,7 @@ enum class RoleType(val typeName: Int) {
     Travellers(R.string.travellers_type_name),
 }
 
+@Serializable
 data class RolesCountModel(
     val townsfolkCount: Int,
     val outsidersCount: Int,

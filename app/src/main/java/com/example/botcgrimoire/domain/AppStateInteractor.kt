@@ -25,10 +25,10 @@ class AppStateInteractor(
     private val context: Context
 ) {
 
-    private val Context.dataStore by preferencesDataStore("GAME_STATE")
+    private val Context.dataStore by preferencesDataStore(STORAGE_NAME)
     private val coroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
-    private val _state = MutableStateFlow<AppState>(AppState.ConfigureGame)
+    private val _state = MutableStateFlow<AppState>(AppState.ConfigureGame())
     val state: StateFlow<AppState> = _state.asStateFlow()
 
     fun changeGameState(state: AppState) {
@@ -54,7 +54,7 @@ class AppStateInteractor(
     }
 
     fun clearData() {
-        _state.value = AppState.ConfigureGame
+        _state.value = AppState.ConfigureGame()
         coroutineScope.launch {
             context.dataStore.edit {
                 it.clear()
@@ -65,16 +65,35 @@ class AppStateInteractor(
     private object PreferencesKey {
         val APP_STATE = stringPreferencesKey("APP_STATE")
     }
+
+    companion object {
+        private const val STORAGE_NAME = "GAME_STATE"
+    }
 }
 
 
 @Serializable
 sealed interface AppState {
     @Serializable
-    object ConfigureGame: AppState
+    data class ConfigureGame(
+        val currentPlayersCount: Int = 5,
+        val selectedRoles: List<Role> = emptyList(),
+        val rolesCountModel: RolesCountModel = checkNotNull(rolesCountMap[currentPlayersCount]) {
+            "При создании объекта ChooseRolesScreenState не получилось взять из мапы rolesCountMap количество для 5 игроков"
+        }
+    ): AppState {
+        val selectedTownsfolk: List<Role> = selectedRoles.filter { it.type == RoleType.Townsfolk }
+        val selectedOutsiders: List<Role> = selectedRoles.filter { it.type == RoleType.Outsiders }
+        val selectedMinions: List<Role> = selectedRoles.filter { it.type == RoleType.Minions }
+        val selectedDemons: List<Role> = selectedRoles.filter { it.type == RoleType.Demons }
+        val selectedTravellers: List<Role> = selectedRoles.filter { it.type == RoleType.Travellers }
+
+        val isContinueButtonEnabled: Boolean = isRolesEnoughForPlayersCount(selectedRoles, rolesCountModel, currentPlayersCount)
+    }
 
     @Serializable
     data class RevealingRoles(
+        val previousState: ConfigureGame = ConfigureGame(),
         val roles: List<RoleForChoose> = emptyList(),
         val drunkRole: Role? = null,
         val travellers: List<Role> = emptyList()
