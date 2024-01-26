@@ -34,10 +34,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.botcgrimoire.R
 import com.example.botcgrimoire.di.getAppStateInteractor
 import com.example.botcgrimoire.domain.AppState
 import com.example.botcgrimoire.domain.Role
+import com.example.botcgrimoire.presentation.chooserole.ChooseYourRoleViewModel
+import com.example.botcgrimoire.presentation.chooserole.chooseYourRoleVMFactory
 import com.example.botcgrimoire.presentation.grimoire.CircleBoxWithText
 
 /**
@@ -45,6 +48,7 @@ import com.example.botcgrimoire.presentation.grimoire.CircleBoxWithText
  */
 @Composable
 fun InfoCardsScreen() {
+    val viewModel: InfoCardsScreenViewModel = viewModel(factory = infoCardsScreenVMFactory())
     val currentCardScreen = remember { mutableStateOf<InfoCard?>(null) }
     val currentCardScreenLocal = currentCardScreen.value
     val backPressedHandle = { currentCardScreen.value = null }
@@ -55,7 +59,7 @@ fun InfoCardsScreen() {
         }
     } else {
         Column(modifier = Modifier.fillMaxSize()) {
-            InfoCard.values().forEach {
+            viewModel.infoCards.forEach {
                 ListElement(stringResource(id = it.text)) { currentCardScreen.value = it }
             }
         }
@@ -75,9 +79,12 @@ fun InfoCardScreen(infoCard: InfoCard, backPressedHandle: () -> Unit) {
         InfoCard.Demon -> EvilInfoScreen(stringResource(infoCard.text))
         InfoCard.Minions -> EvilInfoScreen(stringResource(infoCard.text))
         InfoCard.DemonBluffs -> DemonBluffsScreen(backPressedHandle)
+        InfoCard.LunaticBluffs -> LunaticBluffsScreen(backPressedHandle)
         InfoCard.AnotherPlayerRole -> ShowRoleScreen(backPressedHandle = backPressedHandle)
+        InfoCard.OneOfTwoPlayers -> OneOfTwoPlayersScreen(backPressedHandle = backPressedHandle)
         InfoCard.YourNewRole -> ShowRoleScreen(stringResource(id = R.string.your_new_role_card), backPressedHandle)
         InfoCard.CustomText -> CustomInfoScreen()
+        InfoCard.EditionInfo -> RolesInfoScreen()
     }
 }
 
@@ -89,8 +96,9 @@ private fun DemonBluffsScreen(backPressedHandle: () -> Unit) {
     val allRolesForBluff = remember {
         val appStateInteractor = getAppStateInteractor()
         val currentState = appStateInteractor.state.value as AppState.GameState
+        val edition = currentState.currentEdition
         val selectedRoles = currentState.roles.map { it.role }
-        Role.values().filter { it.isGood && !selectedRoles.contains(it) && it != Role.Drunk }
+        edition.roles.filter { it.isGood && !selectedRoles.contains(it) && it != Role.Drunk && it != Role.Lunatic }
     }
     Column(
         modifier = Modifier
@@ -161,7 +169,11 @@ private fun DemonBluffsScreen(backPressedHandle: () -> Unit) {
 private fun ShowRoleScreen(titleText: String? = null, backPressedHandle: () -> Unit) {
     val color = Color(0xFF494949)
     val selectedRole = remember { mutableStateOf<Role?>(null) }
-    val rolesForSelect = remember { Role.values().toList() }
+    val rolesForSelect = remember {
+        val appStateInteractor = getAppStateInteractor()
+        val currentState = appStateInteractor.state.value as AppState.GameState
+        currentState.currentEdition.roles
+    }
     val roleForShow = selectedRole.value
     Column(
         modifier = Modifier
@@ -248,7 +260,10 @@ enum class InfoCard(
     Demon(R.string.demon_card),
     Minions(R.string.minions_card),
     DemonBluffs(R.string.demon_bluffs_card),
+    LunaticBluffs(R.string.lunatic_bluffs_card),
     AnotherPlayerRole(R.string.another_player_role_card),
+    OneOfTwoPlayers(R.string.one_of_two_players_card),
     YourNewRole(R.string.your_new_role_card),
+    EditionInfo(R.string.edition_info_card),
     CustomText(R.string.custom_text_card),
 }

@@ -14,6 +14,7 @@ import com.example.botcgrimoire.domain.ReminderLink
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleGameState
 import com.example.botcgrimoire.domain.RolesCountModelHelper
+import com.example.botcgrimoire.domain.demons
 import com.example.botcgrimoire.domain.drunkReminder
 import com.example.botcgrimoire.domain.townsfolk
 import com.example.botcgrimoire.domain.travellers
@@ -41,12 +42,18 @@ class ChooseYourRoleViewModel(
         val appState = appStateInteractor.state.value as AppState.RevealingRoles
         val currentRoles = appState.roles.map { it.role }
         val needToSelectDrunk = appState.roles.find { it.role == Role.Drunk } != null && appState.drunkRole == null
+        val needToSelectLunatic = appState.roles.find { it.role == Role.Lunatic } != null && appState.lunaticRole == null
         val rolesForDrunk = if (needToSelectDrunk) {
-            townsfolk.filterNot { currentRoles.contains(it) }
+            townsfolk.filterNot { currentRoles.contains(it) }.filter { appState.currentEdition.roles.contains(it) }
         } else {
             null
         }
-        return ChooseYourRoleScreenState(appState.roles, rolesForDrunk)
+        val rolesForLunatic = if (needToSelectLunatic) {
+            demons.filter { appState.currentEdition.roles.contains(it) }
+        } else {
+            null
+        }
+        return ChooseYourRoleScreenState(appState.roles, rolesForDrunk, rolesForLunatic)
     }
 
     private fun sendEvent(event: ChooseYourRoleScreenEvent) {
@@ -115,9 +122,17 @@ class ChooseYourRoleViewModel(
         _state.value = _state.value.copy(rolesForDrunk = null)
     }
 
+    fun onLunaticRoleClick(role: Role) {
+        val state = appStateInteractor.state.value as AppState.RevealingRoles
+        val newState = state.copy(lunaticRole = role)
+        appStateInteractor.changeGameState(newState)
+        _state.value = _state.value.copy(rolesForLunatic = null)
+    }
+
     fun onContinueClick() {
         val currentState = appStateInteractor.state.value as AppState.RevealingRoles
         val drunkRole = currentState.drunkRole
+        val lunaticRole = currentState.lunaticRole
         val travellers = currentState.travellers.map {
             RoleGameState(role = it)
         }
@@ -130,7 +145,9 @@ class ChooseYourRoleViewModel(
             AppState.GameState(
                 roles = newRolesList,
                 drunkRole = drunkRole,
-                reminders = reminders
+                lunaticRole = lunaticRole,
+                reminders = reminders,
+                currentEdition = currentState.currentEdition
             )
         )
     }

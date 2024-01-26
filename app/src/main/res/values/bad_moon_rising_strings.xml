@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grandmother_role_name">Бабушка</string>
+    <string name="grandmother_player_info">В начале игры вы узнаёте роль одного из добрых игроков. Если Демон его убил, вы тоже умираете.</string>
+    <string name="grandmother_teller_info_fn">[ICON: circle]\n[ICON: eye_open]Покажи жетон роли отмеченного игрока, укажи на этого игрока.[ICON: eye_closed]</string>
+    <string name="grandmother_teller_info_on">Если внук Бабушки был убит Демоном этой ночью:\n• Бабушка умирает.  [ICON: circle]</string>
+
+    <string name="sailor_role_name">Моряк</string>
+    <string name="sailor_player_info">Каждую ночь, выберите живого игрока: либо он, либо вы пьянеете до вечера. Вы не можете умереть.</string>
+    <string name="sailor_teller_info_fn">[ICON: eye_open]Моряк указывает на живого игрока.[ICON: eye_closed]\nВыбранный игрок, или сам Моряк, пьянеет.[ICON: circle]</string>
+    <string name="sailor_teller_info_on">Ранее пьяный игрок больше не пьян.[ICON: circle]\n[ICON: eye_open]Моряк указывает на живого игрока.[ICON: eye_closed]\nВыбранный игрок, или сам Моряк, пьянеет.[ICON: circle]</string>
+
+    <string name="chambermaid_role_name">Горничная</string>
+    <string name="chambermaid_player_info">Каждую ночь, выберите 2 живых игроков (кроме себя): вы узнаёте, сколько из них проснулось этой ночью из-за своей способности.</string>
+    <string name="chambermaid_teller_info">[ICON: eye_open]Горничная указывает на двух живых игроков. Покажи на пальцах (0,1 или 2) сколько из них проснулось этой ночью из-за своей способности.[ICON: eye_closed]</string>
+
+    <string name="exorcist_role_name">Экзорцист</string>
+    <string name="exorcist_player_info">Каждую ночь*, выберите игрока (нельзя того же, что и в прошлую ночь): если выбрали Демона, он сегодня не просыпается, но узнаёт вашу роль.</string>
+    <string name="exorcist_teller_info_on">[ICON: eye_open]Экзорцист указывает на игрока, отличного от предыдущего раза.[ICON: eye_closed]\nЕсли это Демон:\n•[ICON: eye_open]Разбуди Демона. Покажи жетон Экзорциста. Укажи на Экзорциста.[ICON: eye_closed]\n•Демон этой ночью больше не просыпается.[ICON: circle]</string>
+
+    <string name="innkeeper_role_name">Трактирщик</string>
+    <string name="innkeeper_player_info">Каждую ночь*, выберите 2 игроков: этой ночью они не могут умереть, но 1 из них пьянеет до вечера.</string>
+    <string name="innkeeper_teller_info_on">Ранее защищенные игроки теряют свои метки.[ICON: circle]\n[ICON: eye_open]Трактирщик указывает на двух игроков.[ICON: eye_closed]Они защищены [ICON: circle] и один из них пьян.[ICON: circle]</string>
+
+    <string name="gambler_role_name">Азартный игрок</string>
+    <string name="gambler_player_info">Каждую ночь*, выберите игрока и попытайтесь угадать его роль: если не угадали, вы умираете.</string>
+    <string name="gambler_teller_info_on">[ICON: eye_open]Азартный игрок указывает на игрока и на персонажа из списка.[ICON: eye_closed]\nЕсли неправ, Азартный игрок умирает.[ICON: circle]</string>
+
+    <string name="gossip_role_name">Сплетница</string>
+    <string name="gossip_player_info">Каждый день, вы можете сделать “публичное заявление”: если оно правдиво, сегодня ночью один из игроков умрёт.</string>
+    <string name="gossip_teller_info_on">Если публичное заявление Сплетницы было правдой:\n• Выбери игрока незащищенного от смерти сегодня. Этот игрок умирает.[ICON: circle]</string>
+
+    <string name="courtier_role_name">Льстец</string>
+    <string name="courtier_player_info">Раз за игру, ночью можете выбрать роль из списка (не игрока): этот персонаж пьянеет на 3 ночи и 3 дня.</string>
+    <string name="courtier_teller_info_fn">[ICON: eye_open]Льстец сигналит «НЕТ» или выбирает персонажа из списка.[ICON: eye_closed]\nЕсли Льстец использовал способность, отметь это.[ICON: circle]\nЕсли выбранный персонаж участвует в игре, этот игрок пьянеет.[ICON: circle]</string>
+    <string name="courtier_teller_info_on">Уменьши количество дней пьянства отмеченного игрока.[ICON: circle]\nЕсли Льстец еще не пользовался способностью:\n•[ICON: eye_open]Льстец сигналит «НЕТ» или выбирает персонажа из списка.[ICON: eye_closed]\n•Если Льстец использовал способность, отметь это. [ICON: circle]Если выбранный персонаж участвует в игре, этот игрок пьянеет.[ICON: circle]</string>
+
+    <string name="professor_role_name">Профессор</string>
+    <string name="professor_player_info">Раз за игру, ночью* можете выбрать мёртвого игрока: если он Горожанин, то он оживает.</string>
+    <string name="professor_teller_info_on">Если Профессор еще не пользовался способностью:\n•[ICON: eye_open]Профессор сигналит «НЕТ» или выбирает мертвого игрока.[ICON: eye_closed]\n•Если выбранный игрок Горожанин, он оживает[ICON: circle]</string>
+
+    <string name="minstrel_role_name">Менестрель</string>
+    <string name="minstrel_player_info">Когда Приспешник умирает в результате казни, все игроки (кроме вас и Странников) пьянеют до завтрашнего вечера.</string>
+    <string name="minstrel_teller_info_on">Убери метку «Все пьяны». [ICON: circle]\nЕсли сегодня днём умер Приспешник: Все, кроме Менестреля и Странников, пьянеют. Отметь жетоном «Все пьяны»[ICON: circle]</string>
+
+    <string name="tea_lady_role_name">Травница</string>
+    <string name="tea_lady_player_info">Если оба ваших живых соседа - добрые, они не могут умереть.</string>
+
+    <string name="pacifist_role_name">Пацифист</string>
+    <string name="pacifist_player_info">Казнённые добрые игроки могут не умереть.</string>
+
+    <string name="fool_role_name">Шут</string>
+    <string name="fool_player_info">Когда вы умираете в первый раз, вы не умираете.</string>
+
+
+
+    <string name="tinker_role_name">Механик</string>
+    <string name="tinker_player_info">Вы можете умереть в любую секунду.</string>
+    <string name="tinker_teller_info_on">Механик может умереть.[ICON: circle]</string>
+
+    <string name="moonchild_role_name">Дитя Луны</string>
+    <string name="moonchild_player_info">Если вы узнали, что вы умерли, выберите одного живого игрока: если он добрый, то сегодня ночью он умрёт.</string>
+    <string name="moonchild_teller_info_on">Если днём Дитя Луны выбрал своей способностью игрока:\n• Если этот игрок на стороне Добра, он умирает.[ICON: circle]</string>
+
+    <string name="goon_role_name">Наёмник</string>
+    <string name="goon_player_info">Каждую ночью. 1ый игрок, выбравший вас своей способностью, моментально пьянеет до заката (Его способность на вас не срабатывает). Вы переходите на сторону этого игрока.</string>
+    <string name="goon_teller_info">Если кто-то из игроков использовал свою способность на Наёмнике:\n•Наёмник переходит на сторону этого игрока.[ICON: circle]\n•[ICON: eye_open]Покажи карточку «Ты» и укажи на чьей он стороне.[ICON: eye_closed]</string>
+
+    <string name="lunatic_role_name">Лунатик</string>
+    <string name="lunatic_player_info">Считаете себя Демоном, но ваша способность даёт сбои. Демон знает кто вы и знает, кого вы пытаетесь атаковать.</string>
+    <string name="lunatic_teller_info_fn">[ICON: eye_open]Разбуди лунатика, покажи карточку «Это твои приспешники». Укажи на столько игроков сколько реальных Приспешников в игре.\n•Покажи карточку «Эти персонажи НЕ участвуют в игре» и покажи 3 жетона любых хороших персонажей.[ICON: eye_closed]\n\n[ICON: eye_open]Разбуди Демона. Покажи карточку «Ты» и жетон Демона.\nПокажи Демону кто является лунатиком.[ICON: eye_closed]</string>
+    <string name="lunatic_teller_info_start">[ICON: eye_open]Позволь Лунатику отыграть действия Демона[ICON: eye_closed]:</string>
+    <string name="lunatic_teller_info_end">Отметь кого атаковал Лунатик.[ICON: circle]\nЕсли Лунатик атаковал кого-то: [ICON: eye_open] Разбуди Демона. Покажи ему маркер атаки Лунатика и укажи на выбранных Лунатиком игроков.[ICON: eye_closed]  Убери маркеры атаки Лунатика.[ICON: circle]</string>
+
+
+
+    <string name="godfather_role_name">Крёстный отец</string>
+    <string name="godfather_player_info">В начале игры узнаёте, какие Изгои участвуют в игре. Если днем Изгой умер, ночью выберите игрока, он умирает. [+1 или −1 Изгой]</string>
+    <string name="godfather_teller_info_fn">[ICON: eye_open]Покажи жетоны Изгоев (не указывая на игроков), которые учувствуют в игре[ICON: eye_closed]</string>
+    <string name="godfather_teller_info_on">Если сегодня днём умер Изгой:\n[ICON: eye_open]Крёстный отец указывает на игрока [ICON: eye_closed], этот игрок умирает.[ICON: circle]</string>
+
+    <string name="devils_advocate_role_name">Адвокат дьявола</string>
+    <string name="devils_advocate_player_info">Каждую ночь, выберите живого игрока (нельзя того же, что и в прошлую ночь): если завтра его казнят, он не умирает. (Нельзя выбрать «мёртвого» Зомбула.)</string>
+    <string name="devils_advocate_teller_info_fn">[ICON: eye_open]Адвокат дьявола указывает на живого игрока.[ICON: eye_closed]\nВыбранный игрок переживет завтрашнюю казнь.[ICON: circle]</string>
+    <string name="devils_advocate_teller_info_on">[ICON: eye_open]Адвокат дьявола указывает на живого игрока, отличного от предыдущего раза.[ICON: eye_closed]\nВыбранный игрок переживет завтрашнюю казнь.[ICON: circle]</string>
+
+    <string name="assassin_role_name">Убийца</string>
+    <string name="assassin_player_info">Раз за игру, ночью*, выберите игрока: он умирает, даже если не может умереть.</string>
+    <string name="assassin_teller_info_on">Если Убийца еще не пользовался способностью:\n•[ICON: eye_open]Убийца сигналит «НЕТ» или выбирает игрока. [ICON: eye_closed] Этот игрок умирает.[ICON: circle]</string>
+
+    <string name="mastermind_role_name">Криминальный гений</string>
+    <string name="mastermind_player_info">Если Демон умирает в результате казни, сыграйте ещё 1 день. Если в последний день казнили игрока, команда казненного проигрывает.</string>
+
+    <string name="zombuul_role_name">Зомбул</string>
+    <string name="zombuul_player_info">Каждую ночь*, если сегодня никто не умер, выберите игрока: он умирает. Когда вас убивают в первый раз, вы не умираете, но опознаётесь мёртвым (даже если пьяны/отравлены).</string>
+    <string name="zombuul_teller_info_on">Если сегодня днём никто не умер:\n•[ICON: eye_open]Зомбул указывает на игрока [ICON: eye_closed], этот игрок умирает.[ICON: circle]</string>
+
+    <string name="pukka_role_name">Пукка</string>
+    <string name="pukka_player_info">Каждую ночь, выберите игрока: он отравлен. Предыдущий успешно отравленный игрок умирает и больше не отравлен.</string>
+    <string name="pukka_teller_info_fn">[ICON: eye_open]Пукка указывает на игрока.[ICON: eye_closed]Этот игрок отравлен.[ICON: circle]</string>
+    <string name="pukka_teller_info_on">[ICON: eye_open]Пукка указывает на игрока.[ICON: eye_closed] Этот игрок отравлен.[ICON: circle]\nУспешно отравленный ранее игрок умирает и больше не отравлен.[ICON: circle]</string>
+
+    <string name="shabaloth_role_name">Шабалот</string>
+    <string name="shabaloth_player_info">Каждую ночь*, выберите 2 игроков: они умирают. Один из игроков, выбранных в прошлый раз, может ожить.</string>
+    <string name="shabaloth_teller_info_on">Один из игроков, выбранных в прошлый раз Шабалотом, может ожить.[ICON: circle]\n[ICON: eye_open]Шабалот указывает на двух игроков.[ICON: eye_closed]Эти игроки умирают.[ICON: circle]</string>
+
+    <string name="po_role_name">По</string>
+    <string name="po_player_info">Каждую ночь*, можете выбрать игрока: он умирает. Если в прошлый раз выбрали никого не убивать, то выберите троих.</string>
+    <string name="po_teller_info_on">[ICON: eye_open]Если По никого не выбрал прошлой ночью [ICON: circle]: По указывает на трех игроков[ICON: circle].\nИначе: По сигналит «НЕТ» [ICON: circle] или выбирает 1го игрока [ICON: circle].\n[ICON: eye_closed]Отмеченные игроки (если есть) умирают.[ICON: circle]</string>
+
+    <string name="apprentice_role_name">Ученик</string>
+    <string name="apprentice_player_info">Первой ночью вы получаете способность какого-либо Горожанина (если вы добрый) или Приспешника (если злой).</string>
+
+    <string name="matron_role_name">Матрона</string>
+    <string name="matron_player_info">Каждый день вы можете заставить до 3 игроков поменяться с кем-либо местами. Игроки не могут вставать с места для тайного общения.</string>
+
+    <string name="judge_role_name">Судья</string>
+    <string name="judge_player_info">Один раз за игру вы можете отменить или автоматически утвердить текущую казнь, если жертву выдвинули не вы.</string>
+
+    <string name="bishop_role_name">Епископ</string>
+    <string name="bishop_player_info">Выдвигать игроков может только Рассказчик. Каждый день должен быть выдвинут хотя бы 1 игрок из команды, противоположной вашей.</string>
+
+    <string name="voudon_role_name">Шаман</string>
+    <string name="voudon_player_info">Голосовать можете только вы и мертвые игроки (и жетон голоса им для этого не требуется). Для осуждения не нужно 50-процентное большинство.</string>
+
+</resources>

@@ -117,17 +117,15 @@
     <string name="travellers_type_name">Странники</string>
 
     <string name="minions_fn_info_title">Информация для Приспешников</string>
-    <string name="minions_fn_info_content">Если в игре 7 или более игроков: \n[ICON: eye_open]Если больше одного Приспешника, они все видят друг друга. \nПокажи карточку «Это демон». Укажи на демона[ICON: eye_closed]</string>
+    <string name="minions_fn_info_content">[ICON: eye_open] Разбуди всех приспешников(они все видят друг друга) \n\nПокажи карточку «Это демон». Укажи на демона[ICON: eye_closed]</string>
 
     <string name="demon_fn_info_title">Информация для Демона</string>
-    <string name="demon_fn_info_content">Если в игре 7 или более игроков:\n[ICON: eye_open]Покажи карточку «Это твои приспешники». Укажи на каждого Приспешника. \nПокажи карточку «Эти персонажи НЕ участвуют в игре» и покажи 3 жетона хороших персонажей, которые не в игре.[ICON: eye_closed]</string>
+    <string name="demon_fn_info_content">Разбуди демона. [ICON: eye_open]Покажи карточку «Это твои приспешники». Укажи на каждого Приспешника. \nПокажи карточку «Эти персонажи НЕ участвуют в игре» и покажи 3 жетона хороших персонажей, которые не в игре.[ICON: eye_closed]</string>
 
     
 
     <string name="butler_reminder_description">Мастер</string>
-    <string name="monk_reminder_description">Защищен</string>
     <string name="drunk_reminder_description">Пьяница</string>
-    <string name="poisoner_reminder_description">Отравлен</string>
     <string name="fortune_teller_reminder_description">Ложный след</string>
     <string name="scarlet_woman_reminder_description">Новый демон</string>
     <string name="imp_reminder_description">Новый демон</string>
@@ -138,44 +136,37 @@
     <string name="librarian_reminder_description_false">Ложный след</string>
     <string name="washerwoman_reminder_description">Горожанин</string>
     <string name="washerwoman_reminder_description_false">Ложный след</string>
-    <string name="slayer_reminder_description">Потрачено</string>
-    <string name="virgin_reminder_description">Потрачено</string>
+    <string name="used_reminder">Использовано</string>
     <string name="thief_reminder_description">Голос -1</string>
     <string name="bureaucrat_reminder_description">Голос х3</string>
     <string name="good_traveller_reminder_description">Добро</string>
     <string name="evil_traveller_reminder_description">Зло</string>
+    <string name="secured_reminder">Защищен</string>
+    <string name="dying_reminder">Умирает</string>
+    <string name="dying_reminder_1">Умирает 1</string>
+    <string name="dying_reminder_2">Умирает 2</string>
+    <string name="dying_reminder_3">Умирает 3</string>
+    <string name="aliving_reminder">Оживает</string>
+    <string name="drunk_reminder">Пьян</string>
+    <string name="drunk_innkeeper_reminder">Защищен и пьян</string>
+    <string name="drunk_reminder_1">Пьян 1</string>
+    <string name="drunk_reminder_2">Пьян 2</string>
+    <string name="drunk_reminder_3">Пьян 3</string>
+    <string name="everybody_drunk_reminder">Все пьяны</string>
+    <string name="attack_reminder_1">Атака 1</string>
+    <string name="attack_reminder_2">Атака 2</string>
+    <string name="attack_reminder_3">Атака 3</string>
+    <string name="attack_reminder_x3">Атака x3</string>
+    <string name="grandson_reminder">Внучок</string>
+    <string name="dead_day_reminder">Умер днем</string>
+    <string name="chosen_reminder">Выбран</string>
+    <string name="survive_execution_reminder">Переживет казнь</string>
+    <string name="not_going_to_die_reminder">Никто не умирает</string>
+    <string name="lunatic_reminder_description">Лунатик</string>
+
 
     <string name="travellers_night_info">Каждый Странник, если может действовать ночью, действует.</string>
-
-<!--    <string name="butler_reminder_description">Сделать мастером дворецкого</string>-->
-<!--    <string name="monk_reminder_description">Защитить монахом</string>-->
-<!--    <string name="drunk_reminder_description">Пьяница</string>-->
-<!--    <string name="poisoner_reminder_description">Отравить отравителем</string>-->
-<!--    <string name="fortune_teller_reminder_description">Ложный след для гадалки</string>-->
-<!--    <string name="scarlet_woman_reminder_description">Сделать блудницу демоном</string>-->
-<!--    <string name="imp_reminder_description">Умирает</string>-->
-<!--    <string name="undertaker_reminder_description">Пометить что гробовщик выкопал</string>-->
-<!--    <string name="investigator_reminder_description">Приспешник для сыщика</string>-->
-<!--    <string name="investigator_reminder_description_false">Ложный след для сыщика</string>-->
-<!--    <string name="librarian_reminder_description">Изгой</string>-->
-<!--    <string name="librarian_reminder_description_false">Ложный след</string>-->
-<!--    <string name="washerwoman_reminder_description">Горожанин</string>-->
-<!--    <string name="washerwoman_reminder_description_false">Ложный след</string>-->
-<!--    <string name="slayer_reminder_description">Потрачено</string>-->
-<!--    <string name="virgin_reminder_description">Потрачено</string>-->
-
-
-<!--    <string name="_reminder_description">Состязание</string>-->
-<!--    <string name="_reminder_description">Состязание</string>-->
-<!--    <string name="_reminder_description">Голос х3</string>-->
-<!--    <string name="_reminder_description">Наказать</string>-->
-<!--    <string name="_reminder_description">Голос -1</string>-->
-<!--    <string name="_reminder_description">Наказать</string>-->
-<!--    <string name="_reminder_description">Наказать</string>-->
-<!--    <string name="_reminder_description">Наказать</string>-->
-<!--    <string name="_reminder_description">Оберегать</string>-->
-<!--    <string name="_reminder_description">Оберегать</string>-->
-
+    <string name="demon_lunatic_night_info">Разбуди Демона и покажи ему на Лунатика</string>
 
     <string name="restart_game_dialog_title">Вы уверены что хотите начать игру сначала ?</string>
     <string name="restart_game_dialog_subtitle">Данные по текущей игре будут сброшены</string>
@@ -203,11 +194,14 @@
     <string name="demon_card">Этот игрок - Демон</string>
     <string name="minions_card">Это - ваши Приспешники</string>
     <string name="demon_bluffs_card">Показать блефы для Демона</string>
+    <string name="lunatic_bluffs_card">Показать блефы для Лунатика</string>
     <string name="demon_bluffs_card_hint">Этих ролей нет в игре :</string>
     <string name="another_player_role_card">Показать жетон роли</string>
+    <string name="one_of_two_players_card">Показать инфу об одном из двух игроков</string>
     <string name="choose_role_card_hint">Выберите роль для показа</string>
     <string name="your_new_role_card">Теперь вы …</string>
     <string name="custom_text_card">Показать произвольный текст</string>
+    <string name="edition_info_card">Показать роли и раскладку</string>
 
     <string name="done">Готово</string>
 
@@ -215,11 +209,18 @@
     <string name="other_nights">Другие ночи</string>
     <string name="enter_name">Поле для имени(заполняет ведущий)</string>
 
-    <string name="poisoned">Отравлен</string>
+    <string name="poisoned_reminder">Отравлен</string>
     <string name="choose_role_title">Выбери доступный жетон чтобы узнать свою роль</string>
     <string name="remember_your_role">Запомни свою роль</string>
     <string name="check_info_in_list">Описание роли прочитаете в памятке</string>
     <string name="cannot_add_role_warning">Вы не можете добавить роль, пока не увеличите количество игроков</string>
+
+    <string name="trouble_brewing">Trouble Brewing</string>
+    <string name="bad_moon_rising">Bad Moon Rising</string>
+    <string name="sects_and_violets">Sects and Violets</string>
+    <string name="custom_script">Свой вариант</string>
+    <string name="choose_drunk_role">Выберите роль для пьяницы</string>
+    <string name="choose_lunatic_role">Выберите роль для лунатика</string>
 
 
 </resources>

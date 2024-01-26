@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.botcgrimoire.presentation.configurescreen
 
 import androidx.compose.animation.animateContentSize
@@ -15,13 +17,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,6 +44,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.botcgrimoire.R
 import com.example.botcgrimoire.domain.AppState
+import com.example.botcgrimoire.domain.Edition
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleType
 import com.example.botcgrimoire.domain.RoleType.Demons
@@ -69,6 +77,11 @@ fun ConfigureGameScreen(
                 onContinueButtonClick()
             }
         }
+        val onEditionSelected: (Edition) -> Unit = remember {
+            {
+                viewModel.onEditionSelected(it)
+            }
+        }
         ChoosePlayersCount(
             state.value,
             warningText.value,
@@ -76,11 +89,11 @@ fun ConfigureGameScreen(
             onRoleSelected,
             onRandomRolesClick,
             onClearSelectedRoles,
-            onContinueClick
+            onContinueClick,
+            onEditionSelected
         )
     }
 }
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -91,20 +104,41 @@ fun ChoosePlayersCount(
     onRoleSelected: (Role) -> Unit,
     onRandomRolesClick: () -> Unit,
     onClearSelectedRoles: () -> Unit,
-    onContinueClick: () -> Unit
+    onContinueClick: () -> Unit,
+    onEditionSelected: (Edition) -> Unit
 ) {
     Column {
         LazyColumn(modifier = Modifier.weight(1f)) {
             val playersCount = state.currentPlayersCount
+            val edition = state.currentEdition
             item(key = "SettingsHeader") {
-                SettingsHeader(playersCount, onPlayersCountChanged, onRandomRolesClick, onClearSelectedRoles)
+                SettingsHeader(
+                    edition,
+                    playersCount,
+                    onPlayersCountChanged,
+                    onRandomRolesClick,
+                    onClearSelectedRoles,
+                    onEditionSelected
+                )
             }
             val countModel = state.rolesCountModel
-            rolesSection(Townsfolk, onRoleSelected, state.selectedTownsfolk, countModel.townsfolkCount)
-            rolesSection(Outsiders, onRoleSelected, state.selectedOutsiders, countModel.outsidersCount)
-            rolesSection(Minions, onRoleSelected, state.selectedMinions, countModel.minionsCount)
-            rolesSection(Demons, onRoleSelected, state.selectedDemons, countModel.demonsCount)
-            rolesSection(Travellers, onRoleSelected, state.selectedTravellers, null)
+            rolesSection(
+                Townsfolk,
+                state.currentEdition,
+                onRoleSelected,
+                state.selectedTownsfolk,
+                countModel.townsfolkCount
+            )
+            rolesSection(
+                Outsiders,
+                state.currentEdition,
+                onRoleSelected,
+                state.selectedOutsiders,
+                countModel.outsidersCount
+            )
+            rolesSection(Minions, state.currentEdition, onRoleSelected, state.selectedMinions, countModel.minionsCount)
+            rolesSection(Demons, state.currentEdition, onRoleSelected, state.selectedDemons, countModel.demonsCount)
+            rolesSection(Travellers, state.currentEdition, onRoleSelected, state.selectedTravellers, null)
         }
         Footer(onContinueClick, state.isContinueButtonEnabled, warningText)
     }
@@ -129,13 +163,16 @@ private fun Footer(onContinueClick: () -> Unit, isContinueButtonEnabled: Boolean
 @Composable
 private fun WarningText(warningText: String?) {
     if (warningText != null) {
-        Card(modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
-            Row(modifier = Modifier
-                .background(MaterialTheme.colorScheme.errorContainer)
-                .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.errorContainer)
+                    .padding(8.dp)
+            ) {
                 Text(text = warningText, color = MaterialTheme.colorScheme.onErrorContainer)
             }
         }
@@ -144,12 +181,15 @@ private fun WarningText(warningText: String?) {
 
 @Composable
 private fun SettingsHeader(
+    currentEdition: Edition,
     currentPlayersCount: Int,
     onPlayersCountChanged: (Int) -> Unit,
     onRandomRolesClick: () -> Unit,
-    onClearSelectedRoles: () -> Unit
+    onClearSelectedRoles: () -> Unit,
+    onEditionSelected: (Edition) -> Unit
 ) {
     Column(modifier = Modifier.padding(26.dp)) {
+        EditionMenu(currentEdition, onEditionSelected)
         Text(text = "Выберите начальное количество игроков")
         Text(text = currentPlayersCount.toString(), modifier = Modifier.align(Alignment.CenterHorizontally))
         Slider(
@@ -169,23 +209,57 @@ private fun SettingsHeader(
     }
 }
 
+@Composable
+private fun EditionMenu(
+    currentEdition: Edition,
+    onEditionSelected: (Edition) -> Unit
+) {
+    val expanded = remember { mutableStateOf(false) }
+    ExposedDropdownMenuBox(expanded = expanded.value, onExpandedChange = {
+        expanded.value = it
+    }) {
+        TextField(
+            value = stringResource(id = currentEdition.nameResId),
+            onValueChange = {},
+            readOnly = true,
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded.value) },
+            colors = ExposedDropdownMenuDefaults.textFieldColors(),
+            modifier = Modifier.menuAnchor()
+        )
+        ExposedDropdownMenu(expanded = expanded.value, onDismissRequest = { expanded.value = false }) {
+            Edition.values().forEach { edition ->
+                val editionName = stringResource(id = edition.nameResId)
+                DropdownMenuItem(text = { Text(text = editionName) }, onClick = {
+                    onEditionSelected(edition)
+                    expanded.value = false
+                })
+            }
+
+        }
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 private fun LazyListScope.rolesSection(
     roleType: RoleType,
+    currentEdition: Edition,
     onRoleSelected: (Role) -> Unit,
     selectedRoles: List<Role>,
     requiredCountForRoleType: Int?
 ) {
     stickyHeader(key = roleType) {
-        Row(modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .background(MaterialTheme.colorScheme.background)
+        Row(
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .background(MaterialTheme.colorScheme.background)
         ) {
             Text(text = stringResource(id = roleType.typeName), modifier = Modifier.weight(1f))
             requiredCountForRoleType?.let { Text(text = "${selectedRoles.size} / $it") }
         }
     }
-    roleType.getAllRoles().forEach {
+    val availableRolesForType = roleType.getAllRoles().filter { currentEdition.roles.contains(it) }
+    android.util.Log.i("MYTAG", "берем все роли, фильтруем по типу и потом еще смотрим есть ли в редакции")
+    availableRolesForType.forEach {
         item(key = it) {
             val isSelected = selectedRoles.contains(it)
             RoleCard(it, isSelected, onRoleSelected)
@@ -200,7 +274,10 @@ private fun RoleCard(role: Role, isSelected: Boolean, onRoleSelected: (Role) -> 
     val badColor = colorResource(id = R.color.evil_role_background)
     val backgroundColor = if (role.isGood) goodColor else badColor
     val backgroundModifier = if (isSelected) {
-        if (role.type == Travellers) Modifier.travellersBackgroundModifier(goodColor, badColor) else Modifier.background(backgroundColor)
+        if (role.type == Travellers) Modifier.travellersBackgroundModifier(
+            goodColor,
+            badColor
+        ) else Modifier.background(backgroundColor)
     } else Modifier
     val textColor = if (isSelected) Color.White else MaterialTheme.colorScheme.onPrimaryContainer
     Card(
@@ -210,7 +287,11 @@ private fun RoleCard(role: Role, isSelected: Boolean, onRoleSelected: (Role) -> 
         Row(modifier = backgroundModifier.padding(8.dp)) {
             Column(modifier = Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Image(painter = painterResource(id = role.icon), contentDescription = null, modifier = Modifier.size(48.dp))
+                    Image(
+                        painter = painterResource(id = role.icon),
+                        contentDescription = null,
+                        modifier = Modifier.size(48.dp)
+                    )
                     Text(text = stringResource(id = role.roleName), fontWeight = FontWeight.Bold, color = textColor)
                 }
                 Text(text = stringResource(id = role.playerInfo), color = textColor)

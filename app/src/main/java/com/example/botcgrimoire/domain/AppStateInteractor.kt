@@ -33,6 +33,7 @@ class AppStateInteractor(
 
     fun changeGameState(state: AppState) {
         _state.value = state
+        android.util.Log.i(TAG, "new app state: $state")
         coroutineScope.launch {
             val string = Json.encodeToString(state)
             context.dataStore.edit {
@@ -68,6 +69,7 @@ class AppStateInteractor(
 
     companion object {
         private const val STORAGE_NAME = "GAME_STATE"
+        private const val TAG = "AppStateInteractor"
     }
 }
 
@@ -77,11 +79,14 @@ sealed interface AppState {
     @Serializable
     data class ConfigureGame(
         val currentPlayersCount: Int = 5,
-        val selectedRoles: List<Role> = emptyList(),
+        val currentEdition: Edition = Edition.TroubleBrewing,
+        val selectedRolesMap: Map<Edition, List<Role>> = Edition.values().associateWith { emptyList() },
         val rolesCountModel: RolesCountModel = checkNotNull(rolesCountMap[currentPlayersCount]) {
             "При создании объекта ChooseRolesScreenState не получилось взять из мапы rolesCountMap количество для 5 игроков"
         }
     ): AppState {
+        val selectedRoles: List<Role> = selectedRolesMap[currentEdition].orEmpty()
+
         val selectedTownsfolk: List<Role> = selectedRoles.filter { it.type == RoleType.Townsfolk }
         val selectedOutsiders: List<Role> = selectedRoles.filter { it.type == RoleType.Outsiders }
         val selectedMinions: List<Role> = selectedRoles.filter { it.type == RoleType.Minions }
@@ -94,8 +99,10 @@ sealed interface AppState {
     @Serializable
     data class RevealingRoles(
         val previousState: ConfigureGame = ConfigureGame(),
+        val currentEdition: Edition = Edition.TroubleBrewing,
         val roles: List<RoleForChoose> = emptyList(),
         val drunkRole: Role? = null,
+        val lunaticRole: Role? = null,
         val travellers: List<Role> = emptyList()
     ): AppState
 
@@ -103,8 +110,10 @@ sealed interface AppState {
     data class GameState(
         val roles: List<RoleGameState> = emptyList(),
         val reminders: List<ReminderLink> = emptyList(),
+        val currentEdition: Edition = Edition.TroubleBrewing,
         val isFirstNight: Boolean = true,
         val drunkRole: Role? = null,
+        val lunaticRole: Role? = null,
         val showNightOrderInGrimoire: Boolean = false
     ): AppState {
 
@@ -116,13 +125,13 @@ sealed interface AppState {
         }
 
         private fun getOrderList(isFirst: Boolean): List<Role> {
-            val list = (if (isFirst) firstNight else otherNights)
+            return getOrder(isFirst, currentEdition)
+                .filterIsInstance<NightOrderModel>()
                 .filter { roleFromOrder ->
                     val roleExists = roles.map { it.role }.contains(roleFromOrder.role)
                     val roleNotDead = (roles.find { it.role == roleFromOrder.role })?.isDead != true
                     roleExists && roleNotDead
-                }
-            return list.map { it.role }
+                }.map { it.role }
         }
     }
 

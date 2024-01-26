@@ -44,6 +44,10 @@ fun RevealedRoleScreen(actualRole: Role, navigateBack: () -> Unit) {
             checkNotNull((getAppStateInteractor().state.value as AppState.RevealingRoles).drunkRole) {
                 "Выбрана роль пьяницы, но пьянице не задана роль для отображения игроку"
             }
+        } else if (actualRole == Role.Lunatic) {
+            checkNotNull((getAppStateInteractor().state.value as AppState.RevealingRoles).lunaticRole) {
+                "Выбрана роль лунатика, но лунатику не задана роль для отображения игроку"
+            }
         } else {
             actualRole
         }

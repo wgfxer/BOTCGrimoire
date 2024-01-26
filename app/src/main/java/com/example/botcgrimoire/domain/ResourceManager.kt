@@ -12,4 +12,8 @@ class ResourceManager(
     fun getString(resId: Int): String {
         return context.getString(resId)
     }
+
+    fun getString(resId: Int, vararg args: Any): String {
+        return context.getString(resId, args)
+    }
 }

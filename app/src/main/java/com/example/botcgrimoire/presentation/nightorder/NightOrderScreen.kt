@@ -51,23 +51,40 @@ fun NightOrderScreen() {
             .verticalScroll(rememberScrollState())
     ) {
         NightSwitcher(state.value.isForFirstNight, onChangeNight)
-        Card(
-            modifier = Modifier
-                .padding(16.dp)
-        ) {
-            Text(modifier = Modifier.padding(16.dp), text = stringResource(id = R.string.travellers_night_info))
-        }
-        if (state.value.isForFirstNight) {
-            FirstNightInfo()
-        }
         state.value.currentOrder.forEach {
-            NightOrderElement(it)
+            when (it) {
+                com.example.botcgrimoire.domain.DemonBluffInfo -> DemonBluffInfo()
+                com.example.botcgrimoire.domain.MinionsInfo -> MinionsInfo()
+                is NightOrderModel -> NightOrderElement(it)
+                com.example.botcgrimoire.domain.TravellersInfo -> TravellersInfo()
+                com.example.botcgrimoire.domain.DemonLunaticInfo -> DemonLunaticInfo()
+            }
         }
     }
 }
 
 @Composable
-private fun FirstNightInfo() {
+private fun TravellersInfo() {
+    Card(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        Text(modifier = Modifier.padding(16.dp), text = stringResource(id = R.string.travellers_night_info))
+    }
+}
+
+@Composable
+private fun DemonLunaticInfo() {
+    Card(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        Text(modifier = Modifier.padding(16.dp), text = stringResource(id = R.string.demon_lunatic_night_info))
+    }
+}
+
+@Composable
+private fun MinionsInfo() {
     Card(
         modifier = Modifier
             .padding(16.dp)
@@ -80,16 +97,14 @@ private fun FirstNightInfo() {
             Row {
                 val color = MaterialTheme.colorScheme.onBackground
                 Text(stringResource(id = R.string.minions_fn_info_title), fontWeight = FontWeight.Bold)
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_question_24),
-                    contentDescription = null,
-                    tint = color,
-                    modifier = Modifier.size(24.dp)
-                )
             }
             TextWithIcons(stringResource(id = R.string.minions_fn_info_content))
         }
     }
+}
+
+@Composable
+private fun DemonBluffInfo() {
     Card(
         modifier = Modifier
             .padding(16.dp)
@@ -102,12 +117,6 @@ private fun FirstNightInfo() {
             Row {
                 Text(stringResource(id = R.string.demon_fn_info_title), fontWeight = FontWeight.Bold)
                 val color = MaterialTheme.colorScheme.onBackground
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_question_24),
-                    contentDescription = null,
-                    tint = color,
-                    modifier = Modifier.size(24.dp)
-                )
             }
             TextWithIcons(stringResource(id = R.string.demon_fn_info_content))
         }
@@ -142,10 +151,10 @@ private fun NightOrderElement(model: NightOrderModel) {
                 }
                 if (model.isDrunk) {
                     Spacer(modifier = Modifier.weight(1f))
-                    Text(stringResource(id = R.string.poisoned), fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.poisoned_reminder), fontWeight = FontWeight.Bold)
                 }
             }
-            TextWithIcons(stringResource(id = model.description))
+            TextWithIcons(model.descriptionString ?: stringResource(id = model.description))
         }
     }
 }

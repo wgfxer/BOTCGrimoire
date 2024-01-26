@@ -7,6 +7,7 @@ import com.example.botcgrimoire.di.getAppStateInteractor
 import com.example.botcgrimoire.di.resourceManager
 import com.example.botcgrimoire.domain.AppState
 import com.example.botcgrimoire.domain.AppStateInteractor
+import com.example.botcgrimoire.domain.Edition
 import com.example.botcgrimoire.domain.RandomRolesListGenerator
 import com.example.botcgrimoire.domain.ResourceManager
 import com.example.botcgrimoire.domain.Role
@@ -60,7 +61,8 @@ class ConfigureGameViewModel(
                 _state.value.selectedRoles.plus(role)
             }
         }
-        val newState = _state.value.copy(selectedRoles = newSelectedRoles)
+        val newMap = _state.value.selectedRolesMap.plus(_state.value.currentEdition to newSelectedRoles)
+        val newState = _state.value.copy(selectedRolesMap = newMap)
         setNewState { newState }
     }
 
@@ -78,16 +80,21 @@ class ConfigureGameViewModel(
         } else {
             _state.value.selectedRoles
         }
-        setNewState { oldState -> oldState.copy(currentPlayersCount = newCount, selectedRoles = newSelectedRoles) }
+        val newMap = _state.value.selectedRolesMap.plus(_state.value.currentEdition to newSelectedRoles)
+        setNewState { oldState -> oldState.copy(currentPlayersCount = newCount, selectedRolesMap = newMap) }
     }
 
     fun onRandomRolesClick() {
-        val selectedRoles = randomRolesListGenerator.generateRandomRoles(_state.value.currentPlayersCount)
-        setNewState { oldState -> oldState.copy(selectedRoles = selectedRoles) }
+        val currentState = _state.value
+        val selectedRoles =
+            randomRolesListGenerator.generateRandomRoles(currentState.currentPlayersCount, currentState.currentEdition)
+        val newMap = _state.value.selectedRolesMap.plus(_state.value.currentEdition to selectedRoles)
+        setNewState { oldState -> oldState.copy(selectedRolesMap = newMap) }
     }
 
     fun onClearSelectedRoles() {
-        setNewState { oldState -> oldState.copy(selectedRoles = emptyList()) }
+        val newMap = _state.value.selectedRolesMap.plus(_state.value.currentEdition to emptyList())
+        setNewState { oldState -> oldState.copy(selectedRolesMap = newMap) }
     }
 
     private fun setNewState(changer: (AppState.ConfigureGame) -> AppState.ConfigureGame) {
@@ -95,7 +102,8 @@ class ConfigureGameViewModel(
         val validatedRolesList =
             rolesCountModelHelper.removeRolesIfExceedsLimit(newState.currentPlayersCount, newState.selectedRoles)
         val countModel = rolesCountModelHelper.getCountModel(newState.currentPlayersCount, newState.selectedRoles)
-        val newActualState = newState.copy(rolesCountModel = countModel, selectedRoles = validatedRolesList)
+        val newMap = _state.value.selectedRolesMap.plus(newState.currentEdition to validatedRolesList)
+        val newActualState = newState.copy(rolesCountModel = countModel, selectedRolesMap = newMap)
         _state.value = newActualState
         appStateInteractor.changeGameState(newActualState)
     }
@@ -110,10 +118,17 @@ class ConfigureGameViewModel(
         appStateInteractor.changeGameState(
             AppState.RevealingRoles(
                 previousState = _state.value,
+                currentEdition = _state.value.currentEdition,
                 choosableRoles,
                 travellers = travellers
             )
         )
+    }
+
+    fun onEditionSelected(edition: Edition) {
+        setNewState {
+            it.copy(currentEdition = edition)
+        }
     }
 }
 

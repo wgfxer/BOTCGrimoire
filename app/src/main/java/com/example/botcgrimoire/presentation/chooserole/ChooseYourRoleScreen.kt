@@ -72,19 +72,21 @@ fun ChooseYourRoleScreen(
             viewModel.onBackClicked()
         }
         val onDrunkRoleClick: (Role) -> Unit = remember { { viewModel.onDrunkRoleClick(it) } }
+        val onLunaticRoleClick: (Role) -> Unit = remember { { viewModel.onLunaticRoleClick(it) } }
         ChooseYourRoleScreen(state.value, onRoleChosen,
             {
                 viewModel.onContinueClick()
                 navigateToGrimoire()
             }
         )
-        DrunkDialog(state.value.rolesForDrunk, onDrunkRoleClick)
+        DrunkDialog(R.string.choose_drunk_role, state.value.rolesForDrunk, onDrunkRoleClick)
+        DrunkDialog(R.string.choose_lunatic_role, state.value.rolesForLunatic, onLunaticRoleClick)
         AlertDialog(state.value.dialog)
     }
 }
 
 @Composable
-private fun DrunkDialog(rolesForDrunk: List<Role>?, onDrunkRoleClick: (Role) -> Unit) {
+private fun DrunkDialog(titleRes: Int, rolesForDrunk: List<Role>?, onRoleChosen: (Role) -> Unit) {
     if (rolesForDrunk != null) {
         Dialog(onDismissRequest = { }) {
             Card(
@@ -93,12 +95,12 @@ private fun DrunkDialog(rolesForDrunk: List<Role>?, onDrunkRoleClick: (Role) -> 
                 shape = RoundedCornerShape(16.dp),
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = spacedBy(8.dp)) {
-                    Text(text = "Выберите роль для пьяницы", fontSize = 32.sp)
+                    Text(text = stringResource(titleRes), fontSize = 32.sp)
                     rolesForDrunk.forEach {
                         Text(
                             text = stringResource(id = it.roleName),
                             modifier = Modifier
-                                .clickable { onDrunkRoleClick(it) }
+                                .clickable { onRoleChosen(it) }
                                 .align(Alignment.CenterHorizontally),
                             fontSize = 24.sp
                         )
@@ -120,7 +122,9 @@ private fun ChooseYourRoleScreen(
     Column {
         Text(
             stringResource(id = R.string.choose_role_title),
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.titleLarge
         )

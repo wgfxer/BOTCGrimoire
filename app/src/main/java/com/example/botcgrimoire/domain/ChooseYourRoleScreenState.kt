@@ -10,6 +10,7 @@ import kotlinx.serialization.Transient
 data class ChooseYourRoleScreenState(
     val roles: List<RoleForChoose>,
     val rolesForDrunk: List<Role>?,
+    val rolesForLunatic: List<Role>?,
     @Transient
     val dialog: DialogData? = null
 ) {

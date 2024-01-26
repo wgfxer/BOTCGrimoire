@@ -34,7 +34,7 @@ enum class Role(
     @DrawableRes val icon: Int,
     val type: RoleType
 ) {
-
+                                            //Trouble Brewing
     //region townsfolk
     Washerwoman(
         roleName = R.string.washerwoman_role_name,
@@ -246,6 +246,227 @@ enum class Role(
         isGood = false,
         type = RoleType.Travellers
     ),
+
+
+
+                                                // Bad Moon Rising
+
+    Grandmother(
+        roleName = R.string.grandmother_role_name,
+        icon = R.drawable.icon_grandmother,
+        playerInfo = R.string.grandmother_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Sailor(
+        roleName = R.string.sailor_role_name,
+        icon = R.drawable.icon_sailor,
+        playerInfo = R.string.sailor_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Chambermaid(
+        roleName = R.string.chambermaid_role_name,
+        icon = R.drawable.icon_chambermaid,
+        playerInfo = R.string.chambermaid_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Exorcist(
+        roleName = R.string.exorcist_role_name,
+        icon = R.drawable.icon_exorcist,
+        playerInfo = R.string.exorcist_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Innkeeper(
+        roleName = R.string.innkeeper_role_name,
+        icon = R.drawable.icon_innkeeper,
+        playerInfo = R.string.innkeeper_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Gambler(
+        roleName = R.string.gambler_role_name,
+        icon = R.drawable.icon_gambler,
+        playerInfo = R.string.gambler_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Gossip(
+        roleName = R.string.gossip_role_name,
+        icon = R.drawable.icon_gossip,
+        playerInfo = R.string.gossip_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Courtier(
+        roleName = R.string.courtier_role_name,
+        icon = R.drawable.icon_courtier,
+        playerInfo = R.string.courtier_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Professor(
+        roleName = R.string.professor_role_name,
+        icon = R.drawable.icon_professor,
+        playerInfo = R.string.professor_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Minstrel(
+        roleName = R.string.minstrel_role_name,
+        icon = R.drawable.icon_minstrel,
+        playerInfo = R.string.minstrel_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    TeaLady(
+        roleName = R.string.tea_lady_role_name,
+        icon = R.drawable.icon_tea_lady,
+        playerInfo = R.string.tea_lady_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Pacifist(
+        roleName = R.string.pacifist_role_name,
+        icon = R.drawable.icon_pacifist,
+        playerInfo = R.string.pacifist_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+    Fool(
+        roleName = R.string.fool_role_name,
+        icon = R.drawable.icon_fool,
+        playerInfo = R.string.fool_player_info,
+        isGood = true,
+        type = RoleType.Townsfolk
+    ),
+
+    Tinker(
+        roleName = R.string.tinker_role_name,
+        icon = R.drawable.icon_tinker,
+        playerInfo = R.string.tinker_player_info,
+        isGood = true,
+        type = RoleType.Outsiders
+    ),
+    Moonchild(
+        roleName = R.string.moonchild_role_name,
+        icon = R.drawable.icon_moonchild,
+        playerInfo = R.string.moonchild_player_info,
+        isGood = true,
+        type = RoleType.Outsiders
+    ),
+    Goon(
+        roleName = R.string.goon_role_name,
+        icon = R.drawable.icon_goon,
+        playerInfo = R.string.goon_player_info,
+        isGood = true,
+        type = RoleType.Outsiders
+    ),
+    Lunatic(
+        roleName = R.string.lunatic_role_name,
+        icon = R.drawable.icon_lunatic,
+        playerInfo = R.string.lunatic_player_info,
+        isGood = true,
+        type = RoleType.Outsiders
+    ),
+
+    Godfather(
+        roleName = R.string.godfather_role_name,
+        icon = R.drawable.icon_godfather,
+        playerInfo = R.string.godfather_player_info,
+        isGood = false,
+        type = RoleType.Minions
+    ),
+    DevilsAdvocate(
+        roleName = R.string.devils_advocate_role_name,
+        icon = R.drawable.icon_devils_advocate,
+        playerInfo = R.string.devils_advocate_player_info,
+        isGood = false,
+        type = RoleType.Minions
+    ),
+    Assassin(
+        roleName = R.string.assassin_role_name,
+        icon = R.drawable.icon_assassin,
+        playerInfo = R.string.assassin_player_info,
+        isGood = false,
+        type = RoleType.Minions
+    ),
+    Mastermind(
+        roleName = R.string.mastermind_role_name,
+        icon = R.drawable.icon_mastermind,
+        playerInfo = R.string.mastermind_player_info,
+        isGood = false,
+        type = RoleType.Minions
+    ),
+
+
+    Zombuul(
+        roleName = R.string.zombuul_role_name,
+        icon = R.drawable.icon_zombuul,
+        playerInfo = R.string.zombuul_player_info,
+        isGood = false,
+        type = RoleType.Demons
+    ),
+    Pukka(
+        roleName = R.string.pukka_role_name,
+        icon = R.drawable.icon_pukka,
+        playerInfo = R.string.pukka_player_info,
+        isGood = false,
+        type = RoleType.Demons
+    ),
+    Shabaloth(
+        roleName = R.string.shabaloth_role_name,
+        icon = R.drawable.icon_shabaloth,
+        playerInfo = R.string.shabaloth_player_info,
+        isGood = false,
+        type = RoleType.Demons
+    ),
+    Po(
+        roleName = R.string.po_role_name,
+        icon = R.drawable.icon_po,
+        playerInfo = R.string.po_player_info,
+        isGood = false,
+        type = RoleType.Demons
+    ),
+
+    Apprentice(
+        roleName = R.string.apprentice_role_name,
+        icon = R.drawable.icon_apprentice,
+        playerInfo = R.string.apprentice_player_info,
+        isGood = false,
+        type = RoleType.Travellers
+    ),
+    Matron(
+        roleName = R.string.matron_role_name,
+        icon = R.drawable.icon_matron,
+        playerInfo = R.string.matron_player_info,
+        isGood = false,
+        type = RoleType.Travellers
+    ),
+    Judge(
+        roleName = R.string.judge_role_name,
+        icon = R.drawable.icon_judge,
+        playerInfo = R.string.judge_player_info,
+        isGood = false,
+        type = RoleType.Travellers
+    ),
+    Bishop(
+        roleName = R.string.bishop_role_name,
+        icon = R.drawable.icon_bishop,
+        playerInfo = R.string.bishop_player_info,
+        isGood = false,
+        type = RoleType.Travellers
+    ),
+    Voudon(
+        roleName = R.string.voudon_role_name,
+        icon = R.drawable.icon_voudon,
+        playerInfo = R.string.voudon_player_info,
+        isGood = false,
+        type = RoleType.Travellers
+    ),
+
 }
 
 @Serializable
