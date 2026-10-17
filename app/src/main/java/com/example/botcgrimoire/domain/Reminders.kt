@@ -101,7 +101,7 @@ val reminders = listOf(
     Reminder(Role.Po, R.string.dying_reminder_2, NoLimits),
     Reminder(Role.Po, R.string.dying_reminder_3, NoLimits),
     Reminder(Role.Po, R.string.attack_reminder_x3, OnlyMyself),
-    Reminder(Role.Professor, R.string.aliving_reminder, ForDead, canBeUsedAfterDeath = true),//TODO For dead
+    Reminder(Role.Professor, R.string.aliving_reminder, ForDead),
     Reminder(Role.TeaLady, R.string.secured_reminder, ByRoleSide(true), repeatable = true),
     Reminder(Role.TeaLady, R.string.secured_reminder, ByRoleSide(true), repeatable = true),
     Reminder(Role.Pukka, R.string.poisoned_reminder, NoLimits, isDrunk = true),
@@ -113,4 +113,3 @@ val reminders = listOf(
     Reminder(Role.Judge, R.string.used_reminder, OnlyMyself),
     Reminder(Role.Fool, R.string.used_reminder, OnlyMyself),
 )
-

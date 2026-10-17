@@ -43,13 +43,30 @@ class NightOrderViewModel(
         return getState(isFirstNight)
     }
 
-    private fun getState(isForFirstNight: Boolean): NightOrderScreenState {
+    private fun getState(
+        isForFirstNight: Boolean,
+        currentStepIndex: Int = 0,
+        completedStepIndexes: Set<Int> = emptySet()
+    ): NightOrderScreenState {
         val currentOrder = getOrderList(isForFirstNight)
-        return NightOrderScreenState(isForFirstNight, currentOrder)
+        val validCompletedSteps = completedStepIndexes.filterTo(mutableSetOf()) {
+            it in currentOrder.indices
+        }
+        return NightOrderScreenState(
+            isForFirstNight = isForFirstNight,
+            currentOrder = currentOrder,
+            currentStepIndex = currentStepIndex.coerceIn(0, currentOrder.size),
+            completedStepIndexes = validCompletedSteps
+        )
     }
 
     fun updateState() {
-        _state.value = getState(_state.value.isForFirstNight)
+        val currentState = _state.value
+        _state.value = getState(
+            isForFirstNight = currentState.isForFirstNight,
+            currentStepIndex = currentState.currentStepIndex,
+            completedStepIndexes = currentState.completedStepIndexes
+        )
     }
 
     fun onChangeNight(isFirstNight: Boolean) {
@@ -57,6 +74,39 @@ class NightOrderViewModel(
         val newState = currentState.copy(isFirstNight = isFirstNight)
         appStateInteractor.changeGameState(newState)
         _state.value = getState(isFirstNight)
+    }
+
+    fun completeCurrentStep(expectedStepIndex: Int) {
+        val currentState = _state.value
+        val currentStepIndex = currentState.currentStepIndex
+        if (currentStepIndex != expectedStepIndex) return
+        if (currentStepIndex !in currentState.currentOrder.indices) return
+
+        val completedSteps = currentState.completedStepIndexes + currentStepIndex
+        val nextStepIndex = (currentStepIndex + 1 until currentState.currentOrder.size)
+            .firstOrNull { it !in completedSteps }
+            ?: currentState.currentOrder.size
+
+        _state.value = currentState.copy(
+            currentStepIndex = nextStepIndex,
+            completedStepIndexes = completedSteps
+        )
+    }
+
+    fun goToPreviousStep() {
+        val currentState = _state.value
+        if (currentState.currentOrder.isEmpty()) return
+
+        val previousStepIndex = if (currentState.currentStepIndex >= currentState.currentOrder.size) {
+            currentState.currentOrder.lastIndex
+        } else {
+            (currentState.currentStepIndex - 1).coerceAtLeast(0)
+        }
+        _state.value = currentState.copy(currentStepIndex = previousStepIndex)
+    }
+
+    fun restartNight() {
+        _state.value = getState(_state.value.isForFirstNight)
     }
 
     fun getRolesForInformation(role: Role): List<Role>? {
@@ -71,7 +121,12 @@ class NightOrderViewModel(
         val availableRoles = if (isDrunk(role, currentState)) {
             currentState.currentEdition.roles
         } else {
-            currentState.roles.map { it.role }
+            buildList {
+                addAll(currentState.roles.map { it.role })
+                if (role == Role.Librarian && currentState.drunkRole != null) {
+                    add(Role.Drunk)
+                }
+            }
         }
         return availableRoles.filter { it.type == roleType }.distinct()
     }
@@ -219,5 +274,16 @@ fun nightOrderVMFactory() = ViewModelFactory { NightOrderViewModel(getAppStateIn
 
 data class NightOrderScreenState(
     val isForFirstNight: Boolean,
-    val currentOrder: List<NightOrderItem>
-)
+    val currentOrder: List<NightOrderItem>,
+    val currentStepIndex: Int = 0,
+    val completedStepIndexes: Set<Int> = emptySet()
+) {
+    val completedStepsCount: Int
+        get() = completedStepIndexes.count { it in currentOrder.indices }
+
+    val isNightComplete: Boolean
+        get() = currentOrder.isNotEmpty() && completedStepsCount == currentOrder.size
+
+    val hasProgress: Boolean
+        get() = completedStepIndexes.isNotEmpty() || currentStepIndex > 0
+}

@@ -6,9 +6,10 @@ package com.example.botcgrimoire.domain
 object RemindersHelper {
     fun filterReminders(gameState: AppState.GameState, clickedRole: RoleGameState): List<Reminder> {
         val resultList = mutableListOf<Reminder>()
-        val aliveRoles = gameState.roles.filter { !it.isDead }.map { roleState -> roleState.role }
+        val rolesInGame = gameState.roles.associateBy { it.role }
         val availableReminders = reminders.filter {
-            it.role == null || aliveRoles.contains(it.role) || it.canBeUsedAfterDeath
+            val sourceRoleState = it.role?.let(rolesInGame::get)
+            it.role == null || sourceRoleState != null && (!sourceRoleState.isDead || it.canBeUsedAfterDeath)
         }
 
         availableReminders.forEach {

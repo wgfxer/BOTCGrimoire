@@ -169,7 +169,8 @@ private fun DemonBluffsScreen(backPressedHandle: () -> Unit) {
 fun ShowRoleScreen(
     titleText: String? = null,
     backPressedHandle: () -> Unit,
-    rolesForSelect: List<Role>? = null
+    rolesForSelect: List<Role>? = null,
+    onCompleted: (() -> Unit)? = null
 ) {
     val color = Color(0xFF494949)
     val selectedRole = remember(rolesForSelect) { mutableStateOf<Role?>(null) }
@@ -219,6 +220,14 @@ fun ShowRoleScreen(
             titleText?.let { Text(text = it, color = Color.White, fontSize = 30.sp) }
             CircleBoxWithText(stringResource(id = roleForShow.roleName), icon = roleForShow.icon)
             Text(stringResource(id = roleForShow.playerInfo), textAlign = TextAlign.Center, color = Color.White)
+            onCompleted?.let { complete ->
+                Button(
+                    onClick = complete,
+                    modifier = Modifier.padding(top = 24.dp)
+                ) {
+                    Text(text = stringResource(id = R.string.complete_and_continue))
+                }
+            }
         }
     }
 }

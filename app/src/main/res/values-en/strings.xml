@@ -194,6 +194,23 @@
     <string name="edition_info_card">Show characters and setup</string>
 
     <string name="done">Done</string>
+    <string name="night_step">Step %1$d of %2$d</string>
+    <string name="night_progress">Completed: %1$d of %2$d</string>
+    <string name="previous_step">Back</string>
+    <string name="next_step">Next</string>
+    <string name="perform_night_action">Perform action</string>
+    <string name="complete_and_continue">Done, continue</string>
+    <string name="complete_night">Finish night</string>
+    <string name="night_complete_title">Night order complete</string>
+    <string name="night_complete_message">All characters and information steps have been handled.</string>
+    <string name="start_next_night">Continue to other nights</string>
+    <string name="restart_night_order">Start a new night order</string>
+    <string name="review_previous_step">Review previous step</string>
+    <string name="change_night_progress_title">Change night order?</string>
+    <string name="change_night_progress_message">Your current progress will be reset. Are you sure you want to continue?</string>
+    <string name="change_night_progress_confirm">Change</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_night_steps">There are no night steps for this game.</string>
 
     <string name="first_night">First night</string>
     <string name="other_nights">Other nights</string>

@@ -210,6 +210,23 @@
     <string name="edition_info_card">Показать роли и раскладку</string>
 
     <string name="done">Готово</string>
+    <string name="night_step">Шаг %1$d из %2$d</string>
+    <string name="night_progress">Выполнено: %1$d из %2$d</string>
+    <string name="previous_step">Назад</string>
+    <string name="next_step">Дальше</string>
+    <string name="perform_night_action">Выполнить действие</string>
+    <string name="complete_and_continue">Готово, дальше</string>
+    <string name="complete_night">Завершить ночь</string>
+    <string name="night_complete_title">Ночной ход завершён</string>
+    <string name="night_complete_message">Все роли и служебные шаги обработаны.</string>
+    <string name="start_next_night">Перейти к следующим ночам</string>
+    <string name="restart_night_order">Начать новый ночной ход</string>
+    <string name="review_previous_step">Проверить предыдущий шаг</string>
+    <string name="change_night_progress_title">Сменить ночной ход?</string>
+    <string name="change_night_progress_message">Текущий прогресс будет сброшен. Вы точно хотите продолжить?</string>
+    <string name="change_night_progress_confirm">Сменить</string>
+    <string name="cancel">Отмена</string>
+    <string name="no_night_steps">Для этой партии нет ночных шагов.</string>
 
     <string name="first_night">Первая ночь</string>
     <string name="other_nights">Другие ночи</string>
