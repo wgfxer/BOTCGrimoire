@@ -18,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -174,9 +175,19 @@ private fun NightOrderElement(model: NightOrderModel, onClick: (() -> Unit)? = n
                         modifier = Modifier.size(24.dp)
                     )
                 }
+                Spacer(modifier = Modifier.weight(1f))
                 if (model.isDrunk) {
-                    Spacer(modifier = Modifier.weight(1f))
                     Text(stringResource(id = R.string.poisoned_reminder), fontWeight = FontWeight.Bold)
+                }
+                if (onClick != null) {
+                    IconButton(onClick = onClick) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_play_arrow_24),
+                            contentDescription = stringResource(id = R.string.show_role),
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
                 }
             }
             TextWithIcons(model.descriptionString ?: stringResource(id = model.description))

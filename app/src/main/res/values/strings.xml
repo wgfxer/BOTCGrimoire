@@ -244,6 +244,7 @@
     <string name="roles_not_in_play">Отсутствующие роли:</string>
     <string name="roles_in_play">Присутствующие роли:</string>
     <string name="one_of_them">Один из этих двух игроков:</string>
+    <string name="show_role">Показать роль</string>
     <string name="townsfolk_count">Горожан: %1$d</string>
     <string name="outsiders_count">Изгоев: %1$d</string>
     <string name="minions_count">Приспешников: %1$d</string>
