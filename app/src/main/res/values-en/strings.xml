@@ -229,6 +229,9 @@
     <string name="roles_in_play">Characters in play:</string>
     <string name="one_of_them">One of these two players is:</string>
     <string name="show_role">Show role</string>
+    <string name="choose_player_to_poison">Choose a player to poison</string>
+    <string name="choose_player_to_protect">Choose a player to protect</string>
+    <string name="choose_player_to_kill">Choose a player to kill</string>
     <string name="townsfolk_count">Townsfolk: %1$d</string>
     <string name="outsiders_count">Outsiders: %1$d</string>
     <string name="minions_count">Minions: %1$d</string>

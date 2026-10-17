@@ -12,9 +12,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -33,10 +35,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.botcgrimoire.R
 import com.example.botcgrimoire.domain.NightOrderModel
 import com.example.botcgrimoire.domain.Role
+import com.example.botcgrimoire.domain.RoleGameState
 import com.example.botcgrimoire.presentation.infocards.ShowRoleScreen
 
 /**
@@ -48,6 +52,7 @@ fun NightOrderScreen() {
     val state = viewModel.state.collectAsState()
     val onChangeNight: (Boolean) -> Unit = remember { { viewModel.onChangeNight(it) } }
     val rolesForInformation = remember { mutableStateOf<List<Role>?>(null) }
+    val nightActionRole = remember { mutableStateOf<Role?>(null) }
     LaunchedEffect(key1 = Unit) {
         viewModel.updateState()
     }
@@ -74,15 +79,101 @@ fun NightOrderScreen() {
                 com.example.botcgrimoire.domain.MinionsInfo -> MinionsInfo()
                 is NightOrderModel -> {
                     val roles = viewModel.getRolesForInformation(it.role)
+                    val nightActionTargets = viewModel.getNightActionTargets(it.role)
                     NightOrderElement(
                         model = it,
-                        onClick = roles?.let { availableRoles ->
-                            { rolesForInformation.value = availableRoles }
+                        onClick = when {
+                            roles != null -> {
+                                { rolesForInformation.value = roles }
+                            }
+                            nightActionTargets != null -> {
+                                {
+                                    viewModel.clearPreviousNightAction(it.role)
+                                    nightActionRole.value = it.role
+                                }
+                            }
+                            else -> null
                         }
                     )
                 }
                 com.example.botcgrimoire.domain.TravellersInfo -> TravellersInfo()
                 com.example.botcgrimoire.domain.DemonLunaticInfo -> DemonLunaticInfo()
+            }
+        }
+    }
+    nightActionRole.value?.let { actionRole ->
+        NightActionTargetDialog(
+            actionRole = actionRole,
+            roles = viewModel.getNightActionTargets(actionRole).orEmpty(),
+            onDismiss = { nightActionRole.value = null },
+            onRoleSelected = { targetRole ->
+                if (actionRole == Role.Imp) {
+                    viewModel.killPlayer(targetRole.role)
+                } else {
+                    viewModel.setNightActionTarget(actionRole, targetRole.role)
+                }
+                nightActionRole.value = null
+            }
+        )
+    }
+}
+
+@Composable
+private fun NightActionTargetDialog(
+    actionRole: Role,
+    roles: List<RoleGameState>,
+    onDismiss: () -> Unit,
+    onRoleSelected: (RoleGameState) -> Unit
+) {
+    val title = when (actionRole) {
+        Role.Poisoner -> R.string.choose_player_to_poison
+        Role.Monk -> R.string.choose_player_to_protect
+        Role.Imp -> R.string.choose_player_to_kill
+        else -> return
+    }
+    Dialog(onDismissRequest = onDismiss) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .heightIn(max = 600.dp)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Text(
+                    text = stringResource(id = title),
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 12.dp)
+                )
+                roles.forEach { roleState ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onRoleSelected(roleState) }
+                            .padding(vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Image(
+                            painter = painterResource(id = roleState.role.icon),
+                            contentDescription = null,
+                            modifier = Modifier.size(40.dp)
+                        )
+                        Row(
+                            modifier = Modifier.padding(start = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(id = roleState.role.roleName),
+                                fontWeight = FontWeight.Bold
+                            )
+                            if (roleState.playerName.isNotEmpty()) {
+                                Text(text = " (${roleState.playerName})")
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -183,7 +274,14 @@ private fun NightOrderElement(model: NightOrderModel, onClick: (() -> Unit)? = n
                     IconButton(onClick = onClick) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_play_arrow_24),
-                            contentDescription = stringResource(id = R.string.show_role),
+                            contentDescription = stringResource(
+                                id = when (model.role) {
+                                    Role.Poisoner -> R.string.choose_player_to_poison
+                                    Role.Monk -> R.string.choose_player_to_protect
+                                    Role.Imp -> R.string.choose_player_to_kill
+                                    else -> R.string.show_role
+                                }
+                            ),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(32.dp)
                         )

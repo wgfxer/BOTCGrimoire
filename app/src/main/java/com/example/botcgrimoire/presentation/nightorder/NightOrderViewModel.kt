@@ -13,10 +13,14 @@ import com.example.botcgrimoire.domain.MinionsInfo
 import com.example.botcgrimoire.domain.NightOrderItem
 import com.example.botcgrimoire.domain.NightOrderModel
 import com.example.botcgrimoire.domain.ResourceManager
+import com.example.botcgrimoire.domain.Reminder
+import com.example.botcgrimoire.domain.ReminderLink
 import com.example.botcgrimoire.domain.Role
+import com.example.botcgrimoire.domain.RoleGameState
 import com.example.botcgrimoire.domain.RoleType
 import com.example.botcgrimoire.domain.TravellersInfo
 import com.example.botcgrimoire.domain.getOrder
+import com.example.botcgrimoire.domain.reminders
 import com.example.botcgrimoire.utils.ViewModelFactory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -70,6 +74,62 @@ class NightOrderViewModel(
             currentState.roles.map { it.role }
         }
         return availableRoles.filter { it.type == roleType }.distinct()
+    }
+
+    fun getNightActionTargets(role: Role): List<RoleGameState>? {
+        val currentState = appStateInteractor.state.value as AppState.GameState
+        return when (role) {
+            Role.Poisoner -> currentState.roles
+            Role.Monk -> currentState.roles.filter { it.role != Role.Monk }
+            Role.Imp -> currentState.roles.filter { !it.isDead }
+            else -> null
+        }
+    }
+
+    fun clearPreviousNightAction(role: Role) {
+        changeNightActionTarget(role, targetRole = null)
+    }
+
+    fun setNightActionTarget(role: Role, targetRole: Role) {
+        changeNightActionTarget(role, targetRole)
+    }
+
+    fun killPlayer(targetRole: Role) {
+        val currentState = appStateInteractor.state.value as AppState.GameState
+        val newRoles = currentState.roles.map { roleState ->
+            if (roleState.role == targetRole) {
+                roleState.copy(isDead = true, hasVote = true)
+            } else {
+                roleState
+            }
+        }
+        val newReminders = currentState.reminders.filter { reminderLink ->
+            val reminderIsNotForTarget = reminderLink.role != targetRole
+            val reminderIsNotFromTarget = reminderLink.reminder.role != targetRole
+            reminderIsNotForTarget && reminderIsNotFromTarget || reminderLink.reminder.role == Role.Drunk
+        }
+        appStateInteractor.changeGameState(
+            currentState.copy(roles = newRoles, reminders = newReminders)
+        )
+        updateState()
+    }
+
+    private fun changeNightActionTarget(role: Role, targetRole: Role?) {
+        val reminder = getNightActionReminder(role) ?: return
+        val currentState = appStateInteractor.state.value as AppState.GameState
+        val newReminders = currentState.reminders
+            .filterNot { it.reminder == reminder }
+            .toMutableList()
+            .apply {
+                if (targetRole != null) add(ReminderLink(reminder, targetRole))
+            }
+        appStateInteractor.changeGameState(currentState.copy(reminders = newReminders))
+        updateState()
+    }
+
+    private fun getNightActionReminder(role: Role): Reminder? {
+        if (role != Role.Poisoner && role != Role.Monk) return null
+        return reminders.firstOrNull { it.role == role }
     }
 
     private fun getOrderList(isFirstNight: Boolean): List<NightOrderItem> {
