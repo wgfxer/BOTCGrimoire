@@ -227,7 +227,7 @@
     <string name="choose_three_lunatic_bluffs">Choose 3 Demon bluffs for the Lunatic</string>
     <string name="roles_not_in_play">Characters not in play:</string>
     <string name="roles_in_play">Characters in play:</string>
-    <string name="one_of_them">One of them is:</string>
+    <string name="one_of_them">One of these two players is:</string>
     <string name="townsfolk_count">Townsfolk: %1$d</string>
     <string name="outsiders_count">Outsiders: %1$d</string>
     <string name="minions_count">Minions: %1$d</string>

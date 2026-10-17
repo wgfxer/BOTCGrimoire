@@ -166,14 +166,19 @@ private fun DemonBluffsScreen(backPressedHandle: () -> Unit) {
 }
 
 @Composable
-private fun ShowRoleScreen(titleText: String? = null, backPressedHandle: () -> Unit) {
+fun ShowRoleScreen(
+    titleText: String? = null,
+    backPressedHandle: () -> Unit,
+    rolesForSelect: List<Role>? = null
+) {
     val color = Color(0xFF494949)
-    val selectedRole = remember { mutableStateOf<Role?>(null) }
-    val rolesForSelect = remember {
+    val selectedRole = remember(rolesForSelect) { mutableStateOf<Role?>(null) }
+    val allEditionRoles = remember {
         val appStateInteractor = getAppStateInteractor()
         val currentState = appStateInteractor.state.value as AppState.GameState
         currentState.currentEdition.roles
     }
+    val selectableRoles = rolesForSelect ?: allEditionRoles
     val roleForShow = selectedRole.value
     Column(
         modifier = Modifier
@@ -197,7 +202,7 @@ private fun ShowRoleScreen(titleText: String? = null, backPressedHandle: () -> U
                         verticalArrangement = Arrangement.Absolute.spacedBy(8.dp)
                     ) {
                         Text(text = stringResource(id = R.string.choose_role_card_hint), fontSize = 32.sp)
-                        rolesForSelect.forEach {
+                        selectableRoles.forEach {
                             Text(
                                 text = stringResource(id = it.roleName),
                                 modifier = Modifier

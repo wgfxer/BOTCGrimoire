@@ -55,6 +55,23 @@ class NightOrderViewModel(
         _state.value = getState(isFirstNight)
     }
 
+    fun getRolesForInformation(role: Role): List<Role>? {
+        val roleType = when (role) {
+            Role.Washerwoman -> RoleType.Townsfolk
+            Role.Librarian -> RoleType.Outsiders
+            Role.Investigator -> RoleType.Minions
+            else -> null
+        } ?: return null
+
+        val currentState = appStateInteractor.state.value as AppState.GameState
+        val availableRoles = if (isDrunk(role, currentState)) {
+            currentState.currentEdition.roles
+        } else {
+            currentState.roles.map { it.role }
+        }
+        return availableRoles.filter { it.type == roleType }.distinct()
+    }
+
     private fun getOrderList(isFirstNight: Boolean): List<NightOrderItem> {
         val currentAppState = appStateInteractor.state.value as AppState.GameState
 
