@@ -122,7 +122,7 @@ private fun DemonBluffsScreen(backPressedHandle: () -> Unit) {
                                 .verticalScroll(rememberScrollState()),
                             verticalArrangement = Arrangement.Absolute.spacedBy(8.dp)
                         ) {
-                            Text(text = "Выберите 3 роли для блефа Демона", fontSize = 32.sp)
+                            Text(text = stringResource(id = R.string.choose_three_demon_bluffs), fontSize = 32.sp)
                             allRolesForBluff.forEach { role ->
                                 val isRoleSelected = demonBluffs.value.contains(role)
                                 Row(modifier = Modifier

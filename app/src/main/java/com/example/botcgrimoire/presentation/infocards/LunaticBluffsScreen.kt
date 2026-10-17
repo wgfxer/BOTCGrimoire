@@ -77,12 +77,12 @@ fun LunaticBluffsScreen(backPressedHandle: () -> Unit) {
                                 .verticalScroll(rememberScrollState()),
                             verticalArrangement = Arrangement.Absolute.spacedBy(8.dp)
                         ) {
-                            Text(text = "Выберите 3 роли для блефа демона(Лунатику)", fontSize = 32.sp)
-                            Text(text = "Отсутствующие роли: ", fontSize = 20.sp)
+                            Text(text = stringResource(id = R.string.choose_three_lunatic_bluffs), fontSize = 32.sp)
+                            Text(text = stringResource(id = R.string.roles_not_in_play), fontSize = 20.sp)
                             realRolesForBluff.forEach { role ->
                                 RoleWithCheckBox(demonBluffs, role)
                             }
-                            Text(text = "Присутствующие роли: ", fontSize = 20.sp)
+                            Text(text = stringResource(id = R.string.roles_in_play), fontSize = 20.sp)
                             wrongRolesForBluff.forEach { role ->
                                 RoleWithCheckBox(demonBluffs, role)
                             }

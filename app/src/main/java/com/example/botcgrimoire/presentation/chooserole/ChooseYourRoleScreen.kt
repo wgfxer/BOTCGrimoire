@@ -147,7 +147,7 @@ private fun ChooseYourRoleScreen(
             }
         }
         Button(onClick = navigateToGrimoire, enabled = chooseYourRoleScreenState.isStartGameButtonEnabled) {
-            Text(text = "Начать игру")
+            Text(text = stringResource(id = R.string.start_game))
         }
     }
 }

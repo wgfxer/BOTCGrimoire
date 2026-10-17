@@ -2,6 +2,7 @@ package com.example.botcgrimoire.di
 
 import android.app.Application
 import com.example.botcgrimoire.domain.AppStateInteractor
+import com.example.botcgrimoire.domain.LanguagePreferences
 import com.example.botcgrimoire.domain.ResourceManager
 
 /**
@@ -9,11 +10,16 @@ import com.example.botcgrimoire.domain.ResourceManager
  */
 private var app: Application? = null
 val stateInteractor: AppStateInteractor by lazy { AppStateInteractor(app!!.applicationContext) }
+private val languagePreferencesInstance: LanguagePreferences by lazy { LanguagePreferences(app!!.applicationContext) }
 val resourceManager: ResourceManager by lazy { ResourceManager(app!!.applicationContext) }
 
 @Synchronized
 fun getAppStateInteractor(): AppStateInteractor {
     return stateInteractor
+}
+
+fun getLanguagePreferences(): LanguagePreferences {
+    return languagePreferencesInstance
 }
 
 fun setApplication(application: Application) {

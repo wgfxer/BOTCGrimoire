@@ -58,6 +58,7 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.botcgrimoire.R
 import com.example.botcgrimoire.domain.Action
 import com.example.botcgrimoire.domain.ActionsDialog
 import com.example.botcgrimoire.domain.AppState
@@ -146,8 +147,9 @@ private fun ActionsDialog(state: ActionsDialog?) {
 @Composable
 private fun ReminderAction(reminder: Reminder, isAdd: Boolean, modifier: Modifier = Modifier) {
     Row(modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        val prefix = if (isAdd) "" else "Убрать "
-        Text(text = prefix + stringResource(id = reminder.infoOnCard))
+        val reminderText = stringResource(id = reminder.infoOnCard)
+        val actionText = if (isAdd) reminderText else stringResource(R.string.remove_reminder, reminderText)
+        Text(text = actionText)
         Image(
             painterResource(id = reminder.icon),
             contentDescription = null,
@@ -160,7 +162,7 @@ private fun ReminderAction(reminder: Reminder, isAdd: Boolean, modifier: Modifie
 
 @Composable
 private fun ChangeLifeStateAction(newIsDead: Boolean, modifier: Modifier) {
-    val text = if (newIsDead) "Убить" else "Оживить"
+    val text = stringResource(if (newIsDead) R.string.kill_player else R.string.revive_player)
     Box(modifier = modifier
         .heightIn(min = 36.dp)
         .fillMaxWidth(), contentAlignment = Alignment.CenterStart) {
@@ -170,7 +172,7 @@ private fun ChangeLifeStateAction(newIsDead: Boolean, modifier: Modifier) {
 
 @Composable
 private fun ChangeHasVoteAction(newHasVote: Boolean, modifier: Modifier) {
-    val text = if (newHasVote) "Дать жетон голоса" else "Забрать жетон голоса"
+    val text = stringResource(if (newHasVote) R.string.give_vote_token else R.string.take_vote_token)
     Box(modifier = modifier
         .heightIn(min = 36.dp)
         .fillMaxWidth(), contentAlignment = Alignment.CenterStart) {

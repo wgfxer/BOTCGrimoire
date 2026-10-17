@@ -3,10 +3,13 @@ package com.example.botcgrimoire.presentation.settings
 import androidx.lifecycle.ViewModel
 import com.example.botcgrimoire.R
 import com.example.botcgrimoire.di.getAppStateInteractor
+import com.example.botcgrimoire.di.getLanguagePreferences
+import com.example.botcgrimoire.domain.AppLanguage
 import com.example.botcgrimoire.domain.AppState
 import com.example.botcgrimoire.domain.AppStateInteractor
 import com.example.botcgrimoire.domain.ButtonData
 import com.example.botcgrimoire.domain.DialogData
+import com.example.botcgrimoire.domain.LanguagePreferences
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.domain.RoleGameState
 import com.example.botcgrimoire.domain.SettingsScreenState
@@ -20,6 +23,7 @@ import kotlinx.coroutines.flow.asStateFlow
  */
 class SettingsScreenViewModel(
     private val appStateInteractor: AppStateInteractor,
+    private val languagePreferences: LanguagePreferences,
 ): ViewModel() {
 
     private val _state = MutableStateFlow(initialState())
@@ -27,7 +31,10 @@ class SettingsScreenViewModel(
 
     private fun initialState(): SettingsScreenState {
         val showNightOrder = (appStateInteractor.state.value as? AppState.GameState)?.showNightOrderInGrimoire ?: false
-        return SettingsScreenState(showNightOrderInGrimoire = showNightOrder)
+        return SettingsScreenState(
+            showNightOrderInGrimoire = showNightOrder,
+            language = languagePreferences.getLanguage()
+        )
     }
 
     fun onRestartGameButtonClick(navigateToStart: () -> Unit) {
@@ -89,7 +96,17 @@ class SettingsScreenViewModel(
     }
 
     fun dismissDialog() {
-        _state.value = SettingsScreenState(showNightOrderInGrimoire = _state.value.showNightOrderInGrimoire)
+        _state.value = SettingsScreenState(
+            showNightOrderInGrimoire = _state.value.showNightOrderInGrimoire,
+            language = _state.value.language
+        )
+    }
+
+    fun onLanguageChanged(language: AppLanguage, recreateActivity: () -> Unit) {
+        if (language == _state.value.language) return
+        languagePreferences.setLanguage(language)
+        _state.value = _state.value.copy(language = language)
+        recreateActivity()
     }
 
     fun changeNames(newNames: Map<Role, String>) {
@@ -103,4 +120,6 @@ class SettingsScreenViewModel(
     }
 }
 
-fun settingsScreenVMFactory() = ViewModelFactory { SettingsScreenViewModel(getAppStateInteractor()) }
+fun settingsScreenVMFactory() = ViewModelFactory {
+    SettingsScreenViewModel(getAppStateInteractor(), getLanguagePreferences())
+}

@@ -56,10 +56,10 @@ fun RolesInfoScreen() {
 private fun CountModel(playersCount: Int) {
     val model = rolesCountMap[playersCount]
     if (model != null) {
-        Text(text = "Горожан: ${model.townsfolkCount}")
-        Text(text = "Изгоев ${model.outsidersCount}")
-        Text(text = "Приспешников ${model.minionsCount}")
-        Text(text = "Демон: 1")
+        Text(text = stringResource(id = R.string.townsfolk_count, model.townsfolkCount))
+        Text(text = stringResource(id = R.string.outsiders_count, model.outsidersCount))
+        Text(text = stringResource(id = R.string.minions_count, model.minionsCount))
+        Text(text = stringResource(id = R.string.demons_count, 1))
     }
 }
 

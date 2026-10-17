@@ -80,7 +80,7 @@ fun OneOfTwoPlayersScreen(titleText: String? = null, backPressedHandle: () -> Un
                 }
             }
         } else {
-            Text(text = "Один из них: ", color = Color.White, fontSize = 30.sp)
+            Text(text = stringResource(id = R.string.one_of_them), color = Color.White, fontSize = 30.sp)
             CircleBoxWithText(stringResource(id = roleForShow.roleName), icon = roleForShow.icon)
         }
     }

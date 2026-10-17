@@ -34,7 +34,11 @@ import com.example.botcgrimoire.presentation.grimoire.GrimoireScreen
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainGameScreen(navigateToStart: () -> Unit, finishActivity: () -> Unit) {
+fun MainGameScreen(
+    navigateToStart: () -> Unit,
+    finishActivity: () -> Unit,
+    recreateActivity: () -> Unit
+) {
     val currentScreen = remember { mutableStateOf(MainScreenTab.Grimoire) }
     Column {
         Surface(modifier = Modifier.weight(1f).fillMaxWidth()) {
@@ -42,7 +46,7 @@ fun MainGameScreen(navigateToStart: () -> Unit, finishActivity: () -> Unit) {
                 MainScreenTab.Grimoire -> GrimoireScreen()
                 MainScreenTab.Cards -> InfoCardsScreen()
                 MainScreenTab.NightOrder -> NightOrderScreen()
-                MainScreenTab.Settings -> SettingsScreen(navigateToStart)
+                MainScreenTab.Settings -> SettingsScreen(navigateToStart, recreateActivity)
             }
         }
         Bottombar(currentScreen.value) { currentScreen.value = it }

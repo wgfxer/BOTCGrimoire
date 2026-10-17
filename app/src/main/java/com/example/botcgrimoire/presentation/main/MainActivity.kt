@@ -1,5 +1,6 @@
 package com.example.botcgrimoire.presentation.main
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.botcgrimoire.di.getAppStateInteractor
 import com.example.botcgrimoire.domain.AppState
+import com.example.botcgrimoire.domain.LanguagePreferences
 import com.example.botcgrimoire.domain.Role
 import com.example.botcgrimoire.presentation.chooserole.ChooseYourRoleScreen
 import com.example.botcgrimoire.presentation.configurescreen.ConfigureGameScreen
@@ -21,6 +23,10 @@ import com.example.botcgrimoire.presentation.revealrole.RevealedRoleScreen
 import com.example.botcgrimoire.ui.theme.BOTCGrimoireTheme
 
 class MainActivity : ComponentActivity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguagePreferences.localizedContext(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -58,7 +64,8 @@ class MainActivity : ComponentActivity() {
                         composable(MainGameScreen) {
                             MainGameScreen(
                                 navigateToStart = { navController.navigate(ConfigureGameScreen) },
-                                finishActivity = { finish() }
+                                finishActivity = { finish() },
+                                recreateActivity = { recreate() }
                             )
                         }
                     }

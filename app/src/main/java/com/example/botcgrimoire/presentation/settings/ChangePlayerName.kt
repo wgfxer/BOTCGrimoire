@@ -70,6 +70,6 @@ private fun NameEditor(role: Role, playerName: String, onChange: (String) -> Uni
         TextField(value = state.value, onValueChange = {
             state.value = it
             onChange(it)
-        }, label = { Text(text = "Имя игрока") })
+        }, label = { Text(text = stringResource(id = R.string.player_name)) })
     }
 }

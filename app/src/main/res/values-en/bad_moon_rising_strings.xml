@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grandmother_role_name">Grandmother</string>
+    <string name="grandmother_player_info">You start knowing a good player and their character. If the Demon kills them, you die too.</string>
+    <string name="grandmother_teller_info_fn">[ICON: circle]\n[ICON: eye_open]Show the marked player\'s character token, then point to that player.[ICON: eye_closed]</string>
+    <string name="grandmother_teller_info_on">If the Grandmother\'s grandchild was killed by the Demon tonight:\n• The Grandmother dies. [ICON: circle]</string>
+
+    <string name="sailor_role_name">Sailor</string>
+    <string name="sailor_player_info">Each night, choose an alive player: either you or they are drunk until dusk. You cannot die.</string>
+    <string name="sailor_teller_info_fn">[ICON: eye_open]The Sailor points to an alive player.[ICON: eye_closed]\nThe chosen player or the Sailor becomes drunk.[ICON: circle]</string>
+    <string name="sailor_teller_info_on">The previously drunk player is sober.[ICON: circle]\n[ICON: eye_open]The Sailor points to an alive player.[ICON: eye_closed]\nThe chosen player or the Sailor becomes drunk.[ICON: circle]</string>
+
+    <string name="chambermaid_role_name">Chambermaid</string>
+    <string name="chambermaid_player_info">Each night, choose 2 alive players (not yourself): you learn how many woke tonight due to their ability.</string>
+    <string name="chambermaid_teller_info">[ICON: eye_open]The Chambermaid points to two alive players. Show with fingers (0, 1, or 2) how many woke tonight due to their ability.[ICON: eye_closed]</string>
+
+    <string name="exorcist_role_name">Exorcist</string>
+    <string name="exorcist_player_info">Each night*, choose a player (different from last night): the Demon, if chosen, learns who you are then does not wake tonight.</string>
+    <string name="exorcist_teller_info_on">[ICON: eye_open]The Exorcist points to a player different from their previous choice.[ICON: eye_closed]\nIf this is the Demon:\n•[ICON: eye_open]Wake the Demon. Show the Exorcist token. Point to the Exorcist.[ICON: eye_closed]\n•The Demon does not wake again tonight.[ICON: circle]</string>
+
+    <string name="innkeeper_role_name">Innkeeper</string>
+    <string name="innkeeper_player_info">Each night*, choose 2 players: they cannot die tonight, but 1 is drunk until dusk.</string>
+    <string name="innkeeper_teller_info_on">Remove the previously protected players\' reminders.[ICON: circle]\n[ICON: eye_open]The Innkeeper points to two players.[ICON: eye_closed]They are safe [ICON: circle] and one of them is drunk.[ICON: circle]</string>
+
+    <string name="gambler_role_name">Gambler</string>
+    <string name="gambler_player_info">Each night*, choose a player and guess their character: if you guess wrong, you die.</string>
+    <string name="gambler_teller_info_on">[ICON: eye_open]The Gambler points to a player and a character on the sheet.[ICON: eye_closed]\nIf incorrect, the Gambler dies.[ICON: circle]</string>
+
+    <string name="gossip_role_name">Gossip</string>
+    <string name="gossip_player_info">Each day, you may make a public statement. Tonight, if it was true, a player dies.</string>
+    <string name="gossip_teller_info_on">If the Gossip\'s public statement was true:\n• Choose a player who can die tonight. That player dies.[ICON: circle]</string>
+
+    <string name="courtier_role_name">Courtier</string>
+    <string name="courtier_player_info">Once per game, at night, choose a character: they are drunk for 3 nights and 3 days.</string>
+    <string name="courtier_teller_info_fn">[ICON: eye_open]The Courtier signals NO or chooses a character on the sheet.[ICON: eye_closed]\nIf the Courtier used their ability, mark it.[ICON: circle]\nIf the chosen character is in play, that player is drunk.[ICON: circle]</string>
+    <string name="courtier_teller_info_on">Reduce the marked player\'s remaining drunk duration.[ICON: circle]\nIf the Courtier has not used their ability:\n•[ICON: eye_open]The Courtier signals NO or chooses a character on the sheet.[ICON: eye_closed]\n•If the Courtier uses their ability, mark it.[ICON: circle] If the chosen character is in play, that player is drunk.[ICON: circle]</string>
+
+    <string name="professor_role_name">Professor</string>
+    <string name="professor_player_info">Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.</string>
+    <string name="professor_teller_info_on">If the Professor has not used their ability:\n•[ICON: eye_open]The Professor signals NO or chooses a dead player.[ICON: eye_closed]\n•If the chosen player is a Townsfolk, they are resurrected.[ICON: circle]</string>
+
+    <string name="minstrel_role_name">Minstrel</string>
+    <string name="minstrel_player_info">When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.</string>
+    <string name="minstrel_teller_info_on">Remove the Everyone Drunk reminder.[ICON: circle]\nIf a Minion died by execution today, everyone except the Minstrel and Travellers becomes drunk. Place the Everyone Drunk reminder.[ICON: circle]</string>
+
+    <string name="tea_lady_role_name">Tea Lady</string>
+    <string name="tea_lady_player_info">If both your alive neighbors are good, they cannot die.</string>
+
+    <string name="pacifist_role_name">Pacifist</string>
+    <string name="pacifist_player_info">Executed good players might not die.</string>
+
+    <string name="fool_role_name">Fool</string>
+    <string name="fool_player_info">The first time you die, you do not.</string>
+
+    <string name="tinker_role_name">Tinker</string>
+    <string name="tinker_player_info">You might die at any time.</string>
+    <string name="tinker_teller_info_on">The Tinker may die.[ICON: circle]</string>
+
+    <string name="moonchild_role_name">Moonchild</string>
+    <string name="moonchild_player_info">When you learn that you died, publicly choose 1 alive player. Tonight, if they are good, they die.</string>
+    <string name="moonchild_teller_info_on">If the Moonchild chose a player with their ability today:\n• If that player is good, they die.[ICON: circle]</string>
+
+    <string name="goon_role_name">Goon</string>
+    <string name="goon_player_info">Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.</string>
+    <string name="goon_teller_info">If a player used their ability on the Goon:\n•The Goon changes to that player\'s alignment.[ICON: circle]\n•[ICON: eye_open]Show the You Are card and indicate their new alignment.[ICON: eye_closed]</string>
+
+    <string name="lunatic_role_name">Lunatic</string>
+    <string name="lunatic_player_info">You think you are a Demon, but you are not. The Demon knows who you are and who you choose at night.</string>
+    <string name="lunatic_teller_info_fn">[ICON: eye_open]Wake the Lunatic and show the These Are Your Minions card. Point to as many players as there are real Minions in play.\n•Show the These Characters Are Not in Play card and 3 good character tokens.[ICON: eye_closed]\n\n[ICON: eye_open]Wake the Demon. Show the You Are card and the Demon token.\nShow the Demon who the Lunatic is.[ICON: eye_closed]</string>
+    <string name="lunatic_teller_info_start">[ICON: eye_open]Let the Lunatic act as their Demon character[ICON: eye_closed]:</string>
+    <string name="lunatic_teller_info_end">Mark who the Lunatic attacked.[ICON: circle]\nIf the Lunatic attacked someone: [ICON: eye_open]Wake the Demon. Show the Lunatic attack reminder and point to the players chosen by the Lunatic.[ICON: eye_closed] Remove the Lunatic attack reminders.[ICON: circle]</string>
+
+    <string name="godfather_role_name">Godfather</string>
+    <string name="godfather_player_info">You start knowing which Outsiders are in play. If 1 died today, choose a player tonight: they die. [+1 or −1 Outsider]</string>
+    <string name="godfather_teller_info_fn">[ICON: eye_open]Show the Outsider character tokens that are in play, without pointing to players.[ICON: eye_closed]</string>
+    <string name="godfather_teller_info_on">If an Outsider died today:\n[ICON: eye_open]The Godfather points to a player.[ICON: eye_closed] That player dies.[ICON: circle]</string>
+
+    <string name="devils_advocate_role_name">Devil\'s Advocate</string>
+    <string name="devils_advocate_player_info">Each night, choose a living player (different from last night): if executed tomorrow, they do not die.</string>
+    <string name="devils_advocate_teller_info_fn">[ICON: eye_open]The Devil\'s Advocate points to a living player.[ICON: eye_closed]\nThe chosen player survives execution tomorrow.[ICON: circle]</string>
+    <string name="devils_advocate_teller_info_on">[ICON: eye_open]The Devil\'s Advocate points to a living player different from the previous choice.[ICON: eye_closed]\nThe chosen player survives execution tomorrow.[ICON: circle]</string>
+
+    <string name="assassin_role_name">Assassin</string>
+    <string name="assassin_player_info">Once per game, at night*, choose a player: they die, even if for some reason they could not.</string>
+    <string name="assassin_teller_info_on">If the Assassin has not used their ability:\n•[ICON: eye_open]The Assassin signals NO or chooses a player.[ICON: eye_closed] That player dies.[ICON: circle]</string>
+
+    <string name="mastermind_role_name">Mastermind</string>
+    <string name="mastermind_player_info">If the Demon dies by execution, play for 1 more day. If a player is then executed, their team loses.</string>
+
+    <string name="zombuul_role_name">Zombuul</string>
+    <string name="zombuul_player_info">Each night*, if no one died today, choose a player: they die. The 1st time you die, you live but register as dead.</string>
+    <string name="zombuul_teller_info_on">If no one died today:\n•[ICON: eye_open]The Zombuul points to a player.[ICON: eye_closed] That player dies.[ICON: circle]</string>
+
+    <string name="pukka_role_name">Pukka</string>
+    <string name="pukka_player_info">Each night, choose a player: they are poisoned. The previously poisoned player dies then becomes healthy.</string>
+    <string name="pukka_teller_info_fn">[ICON: eye_open]The Pukka points to a player.[ICON: eye_closed]That player is poisoned.[ICON: circle]</string>
+    <string name="pukka_teller_info_on">[ICON: eye_open]The Pukka points to a player.[ICON: eye_closed] That player is poisoned.[ICON: circle]\nThe previously poisoned player dies and becomes healthy.[ICON: circle]</string>
+
+    <string name="shabaloth_role_name">Shabaloth</string>
+    <string name="shabaloth_player_info">Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.</string>
+    <string name="shabaloth_teller_info_on">A player chosen by the Shabaloth last night may be resurrected.[ICON: circle]\n[ICON: eye_open]The Shabaloth points to two players.[ICON: eye_closed]Those players die.[ICON: circle]</string>
+
+    <string name="po_role_name">Po</string>
+    <string name="po_player_info">Each night*, you may choose a player: they die. If your last choice was no one, choose 3 players tonight.</string>
+    <string name="po_teller_info_on">[ICON: eye_open]If the Po chose nobody last night [ICON: circle], the Po points to three players.[ICON: circle]\nOtherwise, the Po signals NO [ICON: circle] or chooses one player.[ICON: circle]\n[ICON: eye_closed]The marked players, if any, die.[ICON: circle]</string>
+
+    <string name="apprentice_role_name">Apprentice</string>
+    <string name="apprentice_player_info">On your 1st night, you gain a Townsfolk ability (if good) or a Minion ability (if evil).</string>
+
+    <string name="matron_role_name">Matron</string>
+    <string name="matron_player_info">Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private.</string>
+
+    <string name="judge_role_name">Judge</string>
+    <string name="judge_player_info">Once per game, if another player nominated, you may choose to force the current execution to pass or fail.</string>
+
+    <string name="bishop_role_name">Bishop</string>
+    <string name="bishop_player_info">Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.</string>
+
+    <string name="voudon_role_name">Voudon</string>
+    <string name="voudon_player_info">Only you and the dead can vote. They do not need a vote token. A 50% majority is not required.</string>
+</resources>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BOTCGrimoire</string>
+
+    <string name="poisoner_role_name">Poisoner</string>
+    <string name="poisoner_player_info">Each night, choose a player: they are poisoned tonight and tomorrow day.</string>
+    <string name="poisoner_teller_info_fn">[ICON: eye_open]The Poisoner points to a player.[ICON: eye_closed] That player is poisoned.[ICON: circle]</string>
+    <string name="poisoner_teller_info_on">The previously poisoned player is healthy.[ICON: circle] \n [ICON: eye_open]The Poisoner points to a player. [ICON: eye_closed]That player is poisoned.[ICON: circle]</string>
+
+    <string name="washerwoman_role_name">Washerwoman</string>
+    <string name="washerwoman_player_info">You start knowing that 1 of 2 players is a particular Townsfolk.</string>
+    <string name="washerwoman_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Show a Townsfolk character token that is in play. Point to two players, one of whom is that character.[ICON: eye_closed]</string>
+
+    <string name="librarian_role_name">Librarian</string>
+    <string name="librarian_player_info">You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)</string>
+    <string name="librarian_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Show an Outsider character token that is in play. Point to two players, one of whom is that character.[ICON: eye_closed]</string>
+
+    <string name="investigator_role_name">Investigator</string>
+    <string name="investigator_player_info">You start knowing that 1 of 2 players is a particular Minion.</string>
+    <string name="investigator_teller_info">[ICON: circle][ICON: circle]\n[ICON: eye_open]Show a Minion character token that is in play. Point to two players, one of whom is that character.[ICON: eye_closed]</string>
+
+    <string name="chef_role_name">Chef</string>
+    <string name="chef_player_info">You start knowing how many pairs of evil players there are.</string>
+    <string name="chef_teller_info">[ICON: eye_open]Show the number (0, 1, 2, …) of pairs of neighboring evil players.[ICON: eye_closed]</string>
+
+    <string name="empath_role_name">Empath</string>
+    <string name="empath_player_info">Each night, you learn how many of your 2 alive neighbors are evil.</string>
+    <string name="empath_teller_info">[ICON: eye_open]Show the number (0, 1, or 2) of the Empath\'s alive evil neighbors.[ICON: eye_closed]</string>
+
+    <string name="fortune_teller_role_name">Fortune Teller</string>
+    <string name="fortune_teller_player_info">Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.</string>
+    <string name="fortune_teller_teller_info">[ICON: eye_open]The Fortune Teller points to two players. Nod or shake your head to show whether either player is the Demon.[ICON: eye_closed]</string>
+
+    <string name="butler_role_name">Butler</string>
+    <string name="butler_player_info">Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.</string>
+    <string name="butler_teller_info">[ICON: eye_open]The Butler points to a player.[ICON: eye_closed] Mark that player with the Master reminder.</string>
+
+    <string name="spy_role_name">Spy</string>
+    <string name="spy_player_info">Each night, you see the Grimoire. You might register as good and as a Townsfolk or Outsider, even if dead.</string>
+    <string name="spy_teller_info">[ICON: eye_open]Show the Spy the Grimoire for as long as needed.[ICON: eye_closed]</string>
+
+    <string name="drunk_role_name">Drunk</string>
+    <string name="drunk_player_info">You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.</string>
+
+    <string name="recluse_role_name">Recluse</string>
+    <string name="recluse_player_info">You might register as evil and as a Minion or Demon, even if dead.</string>
+
+    <string name="saint_role_name">Saint</string>
+    <string name="saint_player_info">If you die by execution, your team loses.</string>
+
+    <string name="scarlet_woman_role_name">Scarlet Woman</string>
+    <string name="scarlet_woman_player_info">If there are 5 or more players alive and the Demon dies, you become the Demon. (Travellers do not count.)</string>
+    <string name="scarlet_woman_teller_info">If the Scarlet Woman became the Demon: \n [ICON: eye_open]show the You Are card, then the Demon token.[ICON: eye_closed]</string>
+
+    <string name="baron_role_name">Baron</string>
+    <string name="baron_player_info">There are extra Outsiders in play. [+2 Outsiders]</string>
+
+    <string name="imp_role_name">Imp</string>
+    <string name="imp_player_info">Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.</string>
+    <string name="imp_teller_info">[ICON: eye_open]The Imp points to a player. [ICON: eye_closed]That player dies.[ICON: circle] If the Imp chose themself, replace one alive Minion token with the spare Imp token. [ICON: circle] \n [ICON: eye_open]Show that player the You Are card, then the Imp token.[ICON: eye_closed]</string>
+
+    <string name="undertaker_role_name">Undertaker</string>
+    <string name="undertaker_player_info">Each night*, you learn which character died by execution today.</string>
+    <string name="undertaker_teller_info">If a player was executed today:\n[ICON: eye_open]show that player\'s character token.[ICON: eye_closed]</string>
+
+    <string name="monk_role_name">Monk</string>
+    <string name="monk_player_info">Each night*, choose a player (not yourself): they are safe from the Demon tonight.</string>
+    <string name="monk_teller_info">The previously protected player is no longer protected.[ICON: circle] \n [ICON: eye_open]The Monk points to a player other than themself.[ICON: eye_closed] Mark that player as Safe.[ICON: circle]</string>
+
+    <string name="ravenkeeper_role_name">Ravenkeeper</string>
+    <string name="ravenkeeper_player_info">If you die at night, you are woken to choose a player: you learn their character.</string>
+    <string name="ravenkeeper_teller_info">If the Ravenkeeper died tonight: [ICON: eye_open]the Ravenkeeper points to a player. Show that player\'s character token.[ICON: eye_closed]</string>
+
+    <string name="virgin_role_name">Virgin</string>
+    <string name="virgin_player_info">The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.</string>
+
+    <string name="slayer_role_name">Slayer</string>
+    <string name="slayer_player_info">Once per game, during the day, publicly choose a player: if they are the Demon, they die.</string>
+
+    <string name="soldier_role_name">Soldier</string>
+    <string name="soldier_player_info">You are safe from the Demon.</string>
+
+    <string name="mayor_role_name">Mayor</string>
+    <string name="mayor_player_info">If only 3 players live and no execution occurs, your team wins. If you die at night, another player might die instead.</string>
+
+    <string name="bureaucrat_role_name">Bureaucrat</string>
+    <string name="bureaucrat_player_info">Each night, choose a player (not yourself): their vote counts as 3 votes tomorrow.</string>
+
+    <string name="thief_role_name">Thief</string>
+    <string name="thief_player_info">Each night, choose a player (not yourself): their vote counts negatively tomorrow.</string>
+
+    <string name="gunslinger_role_name">Gunslinger</string>
+    <string name="gunslinger_player_info">Each day, after the 1st vote has been tallied, you may choose a player that voted: they die.</string>
+
+    <string name="scapegoat_role_name">Scapegoat</string>
+    <string name="scapegoat_player_info">If a player of your alignment is executed, you might be executed instead.</string>
+
+    <string name="beggar_role_name">Beggar</string>
+    <string name="beggar_player_info">You must use a vote token to vote. Dead players may give you theirs. If so, you learn their alignment.</string>
+
+    <string name="townsfolk_type_name">Townsfolk</string>
+    <string name="outsiders_type_name">Outsiders</string>
+    <string name="minions_type_name">Minions</string>
+    <string name="demons_type_name">Demons</string>
+    <string name="travellers_type_name">Travellers</string>
+
+    <string name="minions_fn_info_title">Minion information</string>
+    <string name="minions_fn_info_content">[ICON: eye_open] Wake all Minions so they see each other. \n\nShow the This Is the Demon card. Point to the Demon.[ICON: eye_closed]</string>
+
+    <string name="demon_fn_info_title">Demon information</string>
+    <string name="demon_fn_info_content">Wake the Demon. [ICON: eye_open]Show the These Are Your Minions card. Point to each Minion. \nShow the These Characters Are Not in Play card and 3 good character tokens that are not in play.[ICON: eye_closed]</string>
+
+    <string name="butler_reminder_description">Master</string>
+    <string name="drunk_reminder_description">Drunk</string>
+    <string name="fortune_teller_reminder_description">Red Herring</string>
+    <string name="scarlet_woman_reminder_description">Is the Demon</string>
+    <string name="imp_reminder_description">Is the Demon</string>
+    <string name="undertaker_reminder_description">Died Today</string>
+    <string name="investigator_reminder_description">Minion</string>
+    <string name="investigator_reminder_description_false">Wrong</string>
+    <string name="librarian_reminder_description">Outsider</string>
+    <string name="librarian_reminder_description_false">Wrong</string>
+    <string name="washerwoman_reminder_description">Townsfolk</string>
+    <string name="washerwoman_reminder_description_false">Wrong</string>
+    <string name="used_reminder">No Ability</string>
+    <string name="thief_reminder_description">Vote −1</string>
+    <string name="bureaucrat_reminder_description">Vote ×3</string>
+    <string name="good_traveller_reminder_description">Good</string>
+    <string name="evil_traveller_reminder_description">Evil</string>
+    <string name="secured_reminder">Safe</string>
+    <string name="dying_reminder">Dead</string>
+    <string name="dying_reminder_1">Dead 1</string>
+    <string name="dying_reminder_2">Dead 2</string>
+    <string name="dying_reminder_3">Dead 3</string>
+    <string name="aliving_reminder">Alive</string>
+    <string name="drunk_reminder">Drunk</string>
+    <string name="drunk_innkeeper_reminder">Safe &amp; Drunk</string>
+    <string name="drunk_reminder_1">Drunk 1</string>
+    <string name="drunk_reminder_2">Drunk 2</string>
+    <string name="drunk_reminder_3">Drunk 3</string>
+    <string name="everybody_drunk_reminder">Everyone Drunk</string>
+    <string name="attack_reminder_1">Attack 1</string>
+    <string name="attack_reminder_2">Attack 2</string>
+    <string name="attack_reminder_3">Attack 3</string>
+    <string name="attack_reminder_x3">Attack ×3</string>
+    <string name="grandson_reminder">Grandchild</string>
+    <string name="dead_day_reminder">Died Today</string>
+    <string name="chosen_reminder">Chosen</string>
+    <string name="survive_execution_reminder">Survives Execution</string>
+    <string name="not_going_to_die_reminder">Nobody Dies</string>
+    <string name="lunatic_reminder_description">Lunatic</string>
+
+    <string name="travellers_night_info">Each Traveller acts if they are able to act at night.</string>
+    <string name="demon_lunatic_night_info">Wake the Demon and point to the Lunatic.</string>
+
+    <string name="restart_game_dialog_title">Are you sure you want to restart the game?</string>
+    <string name="restart_game_dialog_subtitle">The current game data will be cleared.</string>
+    <string name="restart_game_dialog_positive_button">Restart</string>
+    <string name="restart_game_dialog_negative_button">Continue game</string>
+
+    <string name="reselect_role_dialog_title">This role has already been selected</string>
+    <string name="reselect_role_dialog_subtitle">Are you sure you want to open this role? A player should not see another player\'s role.</string>
+    <string name="reselect_role_dialog_positive_button">Yes, open it</string>
+    <string name="reselect_role_dialog_negative_button">No</string>
+
+    <string name="grimoire_tab">Grimoire</string>
+    <string name="cards_tab">Cards</string>
+    <string name="night_order_tab">Night order</string>
+    <string name="settings_tab">Settings</string>
+
+    <string name="restart_game_button">Restart game</string>
+    <string name="add_player">Add player</string>
+    <string name="remove_player">Remove player</string>
+    <string name="change_player_name">Change player name</string>
+    <string name="hide_night_order">Hide night order in the Grimoire</string>
+    <string name="show_night_order">Show night order in the Grimoire</string>
+    <string name="language">Language</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_english">English</string>
+    <string name="add_player_dialog_title">Add player</string>
+    <string name="remove_player_dialog_title">Remove player</string>
+    <string name="player_name">Player name</string>
+
+    <string name="demon_card">This player is the Demon</string>
+    <string name="minions_card">These are your Minions</string>
+    <string name="demon_bluffs_card">Show Demon bluffs</string>
+    <string name="lunatic_bluffs_card">Show Lunatic bluffs</string>
+    <string name="demon_bluffs_card_hint">These characters are not in play:</string>
+    <string name="another_player_role_card">Show a character token</string>
+    <string name="one_of_two_players_card">Show information about one of two players</string>
+    <string name="choose_role_card_hint">Choose a character to show</string>
+    <string name="your_new_role_card">You are now…</string>
+    <string name="custom_text_card">Show custom text</string>
+    <string name="edition_info_card">Show characters and setup</string>
+
+    <string name="done">Done</string>
+
+    <string name="first_night">First night</string>
+    <string name="other_nights">Other nights</string>
+    <string name="enter_name">Player name (entered by the Storyteller)</string>
+
+    <string name="poisoned_reminder">Poisoned</string>
+    <string name="choose_role_title">Choose an available token to learn your role</string>
+    <string name="remember_your_role">Remember your role</string>
+    <string name="check_info_in_list">Read the character ability on the reference sheet</string>
+    <string name="cannot_add_role_warning">Increase the player count before adding another character</string>
+
+    <string name="trouble_brewing">Trouble Brewing</string>
+    <string name="bad_moon_rising">Bad Moon Rising</string>
+    <string name="sects_and_violets">Sects &amp; Violets</string>
+    <string name="custom_script">Custom script</string>
+    <string name="choose_drunk_role">Choose the Drunk\'s perceived character</string>
+    <string name="choose_lunatic_role">Choose the Lunatic\'s perceived Demon</string>
+
+    <string name="continue_button">Continue</string>
+    <string name="choose_initial_player_count">Choose the starting player count</string>
+    <string name="select_random_roles">Choose randomly</string>
+    <string name="clear_roles">Clear characters</string>
+    <string name="start_game">Start game</string>
+    <string name="back_to_role_selection">Back to role selection</string>
+    <string name="remove_reminder">Remove %1$s</string>
+    <string name="kill_player">Kill</string>
+    <string name="revive_player">Revive</string>
+    <string name="give_vote_token">Give vote token</string>
+    <string name="take_vote_token">Take vote token</string>
+    <string name="choose_three_demon_bluffs">Choose 3 Demon bluffs</string>
+    <string name="choose_three_lunatic_bluffs">Choose 3 Demon bluffs for the Lunatic</string>
+    <string name="roles_not_in_play">Characters not in play:</string>
+    <string name="roles_in_play">Characters in play:</string>
+    <string name="one_of_them">One of them is:</string>
+    <string name="townsfolk_count">Townsfolk: %1$d</string>
+    <string name="outsiders_count">Outsiders: %1$d</string>
+    <string name="minions_count">Minions: %1$d</string>
+    <string name="demons_count">Demons: %1$d</string>
+</resources>

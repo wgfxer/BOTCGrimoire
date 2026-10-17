@@ -154,7 +154,7 @@ private fun Footer(onContinueClick: () -> Unit, isContinueButtonEnabled: Boolean
                 .padding(16.dp),
             enabled = isContinueButtonEnabled
         ) {
-            Text(text = "Продолжить")
+            Text(text = stringResource(id = R.string.continue_button))
         }
         WarningText(warningText)
     }
@@ -190,7 +190,7 @@ private fun SettingsHeader(
 ) {
     Column(modifier = Modifier.padding(26.dp)) {
         EditionMenu(currentEdition, onEditionSelected)
-        Text(text = "Выберите начальное количество игроков")
+        Text(text = stringResource(id = R.string.choose_initial_player_count))
         Text(text = currentPlayersCount.toString(), modifier = Modifier.align(Alignment.CenterHorizontally))
         Slider(
             value = currentPlayersCount.toFloat(),
@@ -199,11 +199,11 @@ private fun SettingsHeader(
         )
         Row {
             Button(onClick = onRandomRolesClick) {
-                Text(text = "Выбрать роли случайно")
+                Text(text = stringResource(id = R.string.select_random_roles))
             }
             Spacer(modifier = Modifier.weight(1f))
             Button(onClick = onClearSelectedRoles) {
-                Text(text = "Очистить роли")
+                Text(text = stringResource(id = R.string.clear_roles))
             }
         }
     }

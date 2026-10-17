@@ -101,7 +101,7 @@ fun RevealedRoleScreen(actualRole: Role, navigateBack: () -> Unit) {
             keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences)
         )
         Button(onClick = { navigateBack(); saveNameLambda() }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
-            Text("Вернуться к выбору ролей")
+            Text(stringResource(id = R.string.back_to_role_selection))
         }
     }
     BackHandler {

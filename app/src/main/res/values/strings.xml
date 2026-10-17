@@ -190,6 +190,12 @@
     <string name="change_player_name">Изменить имя</string>
     <string name="hide_night_order">Скрыть порядок хода в гримуаре</string>
     <string name="show_night_order">Показать порядок хода в гримуаре</string>
+    <string name="language">Язык</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_english">English</string>
+    <string name="add_player_dialog_title">Добавить игрока</string>
+    <string name="remove_player_dialog_title">Удалить игрока</string>
+    <string name="player_name">Имя игрока</string>
 
     <string name="demon_card">Этот игрок - Демон</string>
     <string name="minions_card">Это - ваши Приспешники</string>
@@ -221,6 +227,27 @@
     <string name="custom_script">Свой вариант</string>
     <string name="choose_drunk_role">Выберите роль для пьяницы</string>
     <string name="choose_lunatic_role">Выберите роль для лунатика</string>
+
+    <string name="continue_button">Продолжить</string>
+    <string name="choose_initial_player_count">Выберите начальное количество игроков</string>
+    <string name="select_random_roles">Выбрать роли случайно</string>
+    <string name="clear_roles">Очистить роли</string>
+    <string name="start_game">Начать игру</string>
+    <string name="back_to_role_selection">Вернуться к выбору ролей</string>
+    <string name="remove_reminder">Убрать %1$s</string>
+    <string name="kill_player">Убить</string>
+    <string name="revive_player">Оживить</string>
+    <string name="give_vote_token">Дать жетон голоса</string>
+    <string name="take_vote_token">Забрать жетон голоса</string>
+    <string name="choose_three_demon_bluffs">Выберите 3 роли для блефа Демона</string>
+    <string name="choose_three_lunatic_bluffs">Выберите 3 роли для блефа Демона (Лунатику)</string>
+    <string name="roles_not_in_play">Отсутствующие роли:</string>
+    <string name="roles_in_play">Присутствующие роли:</string>
+    <string name="one_of_them">Один из них:</string>
+    <string name="townsfolk_count">Горожан: %1$d</string>
+    <string name="outsiders_count">Изгоев: %1$d</string>
+    <string name="minions_count">Приспешников: %1$d</string>
+    <string name="demons_count">Демонов: %1$d</string>
 
 
 </resources>
